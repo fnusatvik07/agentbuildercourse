@@ -9,8 +9,7 @@ import {
   Flame, MonitorCheck, Briefcase,
 } from "lucide-react";
 
-// Change this to your registration link (Topmate, Google Form, Razorpay, etc.)
-const ENROLL_URL = "https://topmate.io/YOUR_TOPMATE_USERNAME";
+const ENROLL_URL = "https://topmate.io/datasense/2024678";
 const WHATSAPP_GROUP = "https://chat.whatsapp.com/IjnHTbNphYi7GjfSIdR4su";
 
 
@@ -392,10 +391,13 @@ function Hero() {
             <p style={{ fontSize: 16, color: "#64748B", lineHeight: 1.65, marginBottom: 28, maxWidth: 480 }}>
               Master LangGraph, LangChain v1.0, Deep Agents & LangSmith in 6 weeks. Ship agents, not demos.
             </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 40 }}>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 12 }}>
               <a href={ENROLL_URL} className="btn btn-p" style={{ fontSize: 15, padding: "13px 28px" }}>Enroll Now <ArrowRight size={16} /></a>
               <a href="#curriculum" className="btn btn-o" style={{ fontSize: 15, padding: "13px 28px" }}>View Curriculum <ArrowDown size={16} /></a>
             </div>
+            <p style={{ fontSize: 13, color: "#059669", fontWeight: 600, marginBottom: 36 }}>
+              Use code <span style={{ background: "#0F172A", color: "#fff", padding: "2px 8px", borderRadius: 4, fontFamily: "monospace", fontSize: 12, fontWeight: 800 }}>AGENTICAI</span> for 45% off - just Rs 5,000
+            </p>
             <div style={{ display: "flex", gap: 36, flexWrap: "wrap" }}>
               {[{ v: "6", l: "Weeks" }, { v: "12", l: "Sessions" }, { v: "5", l: "Assignments" }, { v: "1", l: "Capstone" }].map((s) => (
                 <div key={s.l} style={{ textAlign: "center" }}>
@@ -843,10 +845,10 @@ function Pricing() {
             $100
           </div>
           <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 16 }}>One-time payment &middot; Full access &middot; Lifetime recordings</p>
-          <div style={{ background: "#ECFDF5", border: "1.5px solid #A7F3D0", borderRadius: 12, padding: "14px 20px", marginBottom: 28 }}>
-            <p style={{ fontSize: 15, fontWeight: 700, color: "#059669", marginBottom: 4 }}>Early Bird Offer</p>
-            <p style={{ fontSize: 14, color: "#475569" }}>
-              Use coupon code <span style={{ background: "#0F172A", color: "#fff", padding: "3px 10px", borderRadius: 6, fontWeight: 800, fontSize: 13, fontFamily: "monospace", letterSpacing: 1 }}>AGENTICAI</span> to get it at just <strong style={{ color: "#059669" }}>$60</strong>
+          <div style={{ background: "#ECFDF5", border: "1.5px solid #A7F3D0", borderRadius: 12, padding: "16px 20px", marginBottom: 28 }}>
+            <p style={{ fontSize: 16, fontWeight: 800, color: "#059669", marginBottom: 6 }}>45% OFF - Early Bird Offer</p>
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6 }}>
+              Use coupon code <span style={{ background: "#0F172A", color: "#fff", padding: "4px 12px", borderRadius: 6, fontWeight: 800, fontSize: 14, fontFamily: "monospace", letterSpacing: 1.5 }}>AGENTICAI</span> at checkout to get it at just <strong style={{ color: "#059669", fontSize: 16 }}>Rs 5,000</strong>
             </p>
           </div>
           <div className="inc">
