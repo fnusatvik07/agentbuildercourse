@@ -91,6 +91,12 @@ const FAQS = [
   { q: "How much time do I need to commit per week?", a: "About 10-12 hours per week: 4-6 hours for live sessions (Sat & Sun, 2-3 hrs each) plus 4-6 hours for assignments and practice. Consistency matters more than cramming." },
   { q: "Do I get lifetime access?", a: "Yes - all session recordings, study notes, starter code, and solution repositories are yours forever. The community access also continues after the course ends." },
   { q: "Is this course live or pre-recorded?", a: "100% live. Every session is conducted in real-time with the instructor. You can ask questions, get instant clarification, and interact with fellow students. Recordings are available after for review." },
+  { q: "Will I get a certificate?", a: "Yes. Upon completing all 5 assignments and the capstone project, you receive a certificate of completion from DataSense. Students who score 90%+ get a distinction certificate." },
+  { q: "Can I add this to my resume/LinkedIn?", a: "Absolutely. The certificate, capstone project, and the skills you build are all portfolio-worthy. We also provide a resume review to help you present your AI engineering skills effectively." },
+  { q: "What if I'm a complete beginner in AI?", a: "If you can write Python and understand APIs, you're ready. We don't teach ML theory or neural networks. This course is about building agent systems with existing frameworks - not training models." },
+  { q: "Do I need a GPU or powerful machine?", a: "No. All exercises use cloud APIs (OpenAI/Anthropic). A laptop with Python 3.11+ and a stable internet connection is all you need." },
+  { q: "What language is the course taught in?", a: "English. All sessions, materials, assignments, and community discussions are in English." },
+  { q: "Can I interact with other students?", a: "Yes - through the private WhatsApp community. You can discuss assignments, share learnings, collaborate on ideas, and network with fellow AI engineers." },
 ];
 
 const INCLUDED = [
@@ -325,6 +331,8 @@ a.btn-p{color:#fff!important;text-decoration:none}
 .fq-q{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;font-size:14px;user-select:none;color:var(--tx);transition:background .15s}
 .fq-q:hover{background:var(--bg2)}
 .fq-a{padding:0 20px 16px;color:var(--tx3);line-height:1.7;font-size:14px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+@media(max-width:768px){.faq-grid{grid-template-columns:1fr}}
 
 /* ── Cap ── */
 .cap{border:2px solid #7C3AED;border-radius:20px;padding:32px;background:var(--cap-bg);margin-top:28px}
@@ -398,10 +406,9 @@ function Nav({ dark, toggleDark }) {
     <>
       <nav className="nav">
         <div className="wrap nav-in">
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <Brain size={24} color="#2563EB" />
-            <span style={{ fontSize: 17, fontWeight: 800, color: "var(--tx)" }}>DataSense</span>
-            <span style={{ fontSize: 13, color: "var(--tx4)", fontWeight: 500 }}>/ Agent Builder</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <img src={process.env.PUBLIC_URL + (dark ? "/logo-dark.png" : "/logo-light.png")} alt="DataSense" style={{ height: 28 }} />
+            <span style={{ fontSize: 13, color: "var(--tx4)", fontWeight: 600 }}>/ Agent Builder</span>
           </div>
           <div className="nav-l">
             {links.map((l) => <a key={l.h} href={l.h}>{l.l}</a>)}
@@ -1127,17 +1134,17 @@ function FAQ() {
   const r = useAnim();
   return (
     <section className="sec" id="faq" ref={r}>
-      <div className="wrap" style={{ maxWidth: 780 }}>
+      <div className="wrap">
         <div data-a style={{ textAlign: "center", marginBottom: 40 }}>
           <p className="label" style={{ color: "#D97706" }}>FAQ</p>
           <h2 className="h2">Common Questions</h2>
         </div>
-        <div data-a>
+        <div data-a className="faq-grid">
           {FAQS.map((f, i) => (
             <div key={i} className="fq">
               <div className="fq-q" onClick={() => setO((p) => ({ ...p, [i]: !p[i] }))}>
                 <span>{f.q}</span>
-                {o[i] ? <ChevronUp size={16} color="#94A3B8" /> : <ChevronDown size={16} color="#94A3B8" />}
+                {o[i] ? <ChevronUp size={16} color="var(--tx4)" /> : <ChevronDown size={16} color="var(--tx4)" />}
               </div>
               {o[i] && <div className="fq-a">{f.a}</div>}
             </div>
@@ -1153,8 +1160,8 @@ function Footer() {
     <footer>
       <div className="wrap" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <Brain size={18} color="#2563EB" />
-          <span style={{ fontWeight: 700, fontSize: 14, color: "var(--tx)" }}>DataSense - Agent Builder</span>
+          <img src={process.env.PUBLIC_URL + "/logo-light.png"} alt="DataSense" style={{ height: 22 }} />
+          <span style={{ fontWeight: 600, fontSize: 13, color: "var(--tx3)" }}>/ Agent Builder</span>
         </div>
         <span style={{ fontSize: 12, color: "var(--tx4)" }}>&copy; {new Date().getFullYear()} DataSense. All rights reserved.</span>
         <div style={{ display: "flex", gap: 20 }}>
