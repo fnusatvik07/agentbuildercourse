@@ -23,7 +23,7 @@ const FRAMEWORKS = [
 
 const JOURNEY_STEPS = [
   { title: "Enroll & Onboard", desc: "Join the cohort, set up dev environment, meet your community", icon: Rocket, color: "#2563EB", bg: "#EFF6FF" },
-  { title: "Attend Live Sessions", desc: "2 sessions/week, 2 hours each - real code, real interaction", icon: Play, color: "#059669", bg: "#ECFDF5" },
+  { title: "Attend Live Sessions", desc: "Every Sat & Sun, 8 AM IST. Each class 2-3 hours. Real code, real interaction.", icon: Play, color: "#059669", bg: "#ECFDF5" },
   { title: "Submit Assignments", desc: "Mandatory assignment after every session - no exceptions", icon: ClipboardCheck, color: "#7C3AED", bg: "#F5F3FF" },
   { title: "Get Detailed Feedback", desc: "Written feedback within 3 days - improve, resubmit, grow", icon: MessageSquare, color: "#D97706", bg: "#FFFBEB" },
   { title: "Track Your Progress", desc: "Scores tracked transparently - attendance, quality, engagement", icon: BarChart, color: "#EF4444", bg: "#FEF2F2" },
@@ -86,15 +86,15 @@ const FAQS = [
   { q: "Who is this course for?", a: "Developers and engineers who can write Python and want to build production AI agent systems. You don't need ML or deep learning experience - just Python, APIs, and the drive to build." },
   { q: "How is this different from YouTube tutorials?", a: "Tutorials show you how to call an API. This course teaches you how to architect, build, and ship agent systems. Every session has a mandatory assignment, your progress is tracked, and the capstone is a live presentation - not a passive video experience." },
   { q: "What will I be able to build after this course?", a: "Production-grade multi-agent systems with persistence, streaming, human-in-the-loop, RAG pipelines, MCP integration, and full observability. The kind of systems companies are hiring for right now." },
-  { q: "When does Batch 1 start?", a: "Batch 1 is scheduled for late April / early May 2026. Join the WhatsApp group for exact date announcements and early bird access." },
+  { q: "When does Batch 1 start?", a: "Batch 1 is scheduled for late April / early May 2026. Classes are on Saturday and Sunday at 8 AM IST, 2-3 hours each. Join the WhatsApp group for the exact start date." },
   { q: "Will this help me get a job in AI?", a: "The course is designed to make you production-ready. The capstone serves as a real portfolio piece, and we provide resume review. The skills covered - LangGraph, LangChain, multi-agent systems, LangSmith - are exactly what companies are hiring for." },
-  { q: "How much time do I need to commit per week?", a: "About 8-10 hours per week: 4 hours for live sessions (2 sessions x 2 hours) plus 4-6 hours for assignments and practice. Consistency matters more than cramming." },
+  { q: "How much time do I need to commit per week?", a: "About 10-12 hours per week: 4-6 hours for live sessions (Sat & Sun, 2-3 hrs each) plus 4-6 hours for assignments and practice. Consistency matters more than cramming." },
   { q: "Do I get lifetime access?", a: "Yes - all session recordings, study notes, starter code, and solution repositories are yours forever. The community access also continues after the course ends." },
   { q: "Is this course live or pre-recorded?", a: "100% live. Every session is conducted in real-time with the instructor. You can ask questions, get instant clarification, and interact with fellow students. Recordings are available after for review." },
 ];
 
 const INCLUDED = [
-  { t: "12 live sessions (2 hrs each)", i: Play },
+  { t: "12 live sessions (Sat & Sun, 8 AM IST)", i: Play },
   { t: "Lifetime recording access", i: Eye },
   { t: "5 graded assignments with feedback", i: FileText },
   { t: "Capstone project with mentorship", i: Rocket },
@@ -380,7 +380,7 @@ function getSeatsLeft() {
 function TopBar() {
   return (
     <div className="topbar">
-      <span>Batch 1 starts late April / early May 2026</span>
+      <span>Batch 1 starts late April / early May 2026 - Sat & Sun, 8 AM IST</span>
       <a href={WHATSAPP_GROUP} target="_blank" rel="noopener noreferrer">
         <MessageSquare size={12} /> Join WhatsApp Group
       </a>
@@ -600,7 +600,7 @@ function AboutCourse() {
             <div className="card" style={{ borderTop: "4px solid #059669" }}>
               <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "var(--tx)" }}>How the course works</h3>
               <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7, marginBottom: 12 }}>
-                12 live sessions. 2 per week. 2 hours each. Every session is followed by a <strong style={{ color: "var(--tx)" }}>mandatory assignment</strong> that gets graded with detailed written feedback.
+                12 live sessions. Every Saturday & Sunday at 8 AM IST, 2-3 hours each. Every session is followed by a <strong style={{ color: "var(--tx)" }}>mandatory assignment</strong> that gets graded with detailed written feedback.
               </p>
               <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7 }}>
                 Your attendance, submission rate, code quality, and engagement are <strong style={{ color: "var(--tx)" }}>tracked and ranked</strong> against the cohort - transparently. The course ends with a <strong style={{ color: "var(--tx)" }}>live capstone presentation</strong> in front of a panel. Recorded. Evaluated. Portfolio-ready.
