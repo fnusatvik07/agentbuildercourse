@@ -4,7 +4,7 @@ import {
   BookOpen, Code2, Zap, Shield, Target, Award, CheckCircle2, ArrowRight,
   ArrowDown, Menu, X, ExternalLink, Globe, AtSign, Link, Play, FileText,
   MessageSquare, Star, Eye, Rocket, GraduationCap,
-  IndianRupee, ChevronUp, CircleCheck, Trophy,
+  ChevronUp, CircleCheck, Trophy,
   ClipboardCheck, BarChart, Presentation, CircleDot,
   Flame, MonitorCheck, Briefcase,
 } from "lucide-react";
@@ -393,7 +393,7 @@ function Hero() {
               Master LangGraph, LangChain v1.0, Deep Agents & LangSmith in 6 weeks. Ship agents, not demos.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 40 }}>
-              <a href={ENROLL_URL} className="btn btn-p" style={{ fontSize: 15, padding: "13px 28px" }}>Enroll Now - ₹5,000 <ArrowRight size={16} /></a>
+              <a href={ENROLL_URL} className="btn btn-p" style={{ fontSize: 15, padding: "13px 28px" }}>Enroll Now - $100 <ArrowRight size={16} /></a>
               <a href="#curriculum" className="btn btn-o" style={{ fontSize: 15, padding: "13px 28px" }}>View Curriculum <ArrowDown size={16} /></a>
             </div>
             <div style={{ display: "flex", gap: 36, flexWrap: "wrap" }}>
@@ -453,7 +453,7 @@ function SyllabusTable() {
           <p className="label" style={{ color: "#0F172A" }}>Detailed Syllabus</p>
           <h2 className="h2">Session-by-Session <span className="grad">Breakdown</span></h2>
           <p className="sub" style={{ margin: "0 auto 24px" }}>Every topic sourced from official documentation. Click any row to see full details.</p>
-          <a href={ENROLL_URL} className="btn btn-p">Enroll Now - ₹5,000 <ArrowRight size={15} /></a>
+          <a href={ENROLL_URL} className="btn btn-p">Enroll Now - $100 <ArrowRight size={15} /></a>
         </div>
         <div data-a style={{ overflowX: "auto" }}>
           <table className="syl">
@@ -839,12 +839,16 @@ function Pricing() {
           <h2 className="h2">Invest in Your AI Career</h2>
         </div>
         <div className="price" data-a>
-          <span className="eb">Early Bird - First 30 Students</span>
-          <div><span style={{ fontSize: 15, color: "#94A3B8", textDecoration: "line-through" }}>₹8,000</span></div>
-          <div style={{ fontSize: 52, fontWeight: 900, color: "#0F172A", marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-            <IndianRupee size={34} /> 5,000
+          <div style={{ fontSize: 52, fontWeight: 900, color: "#0F172A", marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            $100
           </div>
-          <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 28 }}>One-time payment &middot; Full access &middot; Lifetime recordings</p>
+          <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 16 }}>One-time payment &middot; Full access &middot; Lifetime recordings</p>
+          <div style={{ background: "#ECFDF5", border: "1.5px solid #A7F3D0", borderRadius: 12, padding: "14px 20px", marginBottom: 28 }}>
+            <p style={{ fontSize: 15, fontWeight: 700, color: "#059669", marginBottom: 4 }}>Early Bird Offer</p>
+            <p style={{ fontSize: 14, color: "#475569" }}>
+              Use coupon code <span style={{ background: "#0F172A", color: "#fff", padding: "3px 10px", borderRadius: 6, fontWeight: 800, fontSize: 13, fontFamily: "monospace", letterSpacing: 1 }}>AGENTICAI</span> to get it at just <strong style={{ color: "#059669" }}>$60</strong>
+            </p>
+          </div>
           <div className="inc">
             {INCLUDED.map((x, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "#475569" }}>
