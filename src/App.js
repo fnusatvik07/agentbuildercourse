@@ -466,7 +466,7 @@ function Hero() {
               <a href="#curriculum" className="btn btn-o" style={{ fontSize: 15, padding: "13px 28px" }}>View Curriculum <ArrowDown size={16} /></a>
             </div>
             <p style={{ fontSize: 13, color: "#059669", fontWeight: 600, marginBottom: 24 }}>
-              Use code <span style={{ background: "#0F172A", color: "#fff", padding: "2px 8px", borderRadius: 4, fontFamily: "monospace", fontSize: 12, fontWeight: 800 }}>AGENTICAI</span> for 45% off - just Rs 5,000
+              Use code <span style={{ background: "#0F172A", color: "#fff", padding: "2px 8px", borderRadius: 4, fontFamily: "monospace", fontSize: 12, fontWeight: 800 }}>AGENTICAI</span> for 45% off
             </p>
             <SeatCounter />
             <div style={{ display: "flex", gap: 36, flexWrap: "wrap", marginTop: 24 }}>
@@ -1102,7 +1102,7 @@ function Pricing() {
           <div style={{ background: "#ECFDF5", border: "1.5px solid #A7F3D0", borderRadius: 12, padding: "16px 20px", marginBottom: 28 }}>
             <p style={{ fontSize: 16, fontWeight: 800, color: "#059669", marginBottom: 6 }}>45% OFF - Early Bird Offer</p>
             <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.6 }}>
-              Use coupon code <span style={{ background: "#0F172A", color: "#fff", padding: "4px 12px", borderRadius: 6, fontWeight: 800, fontSize: 14, fontFamily: "monospace", letterSpacing: 1.5 }}>AGENTICAI</span> at checkout to get it at just <strong style={{ color: "#059669", fontSize: 16 }}>Rs 5,000</strong>
+              Use coupon code <span style={{ background: "#0F172A", color: "#fff", padding: "4px 12px", borderRadius: 6, fontWeight: 800, fontSize: 14, fontFamily: "monospace", letterSpacing: 1.5 }}>AGENTICAI</span> at checkout for <strong style={{ color: "#059669", fontSize: 16 }}>45% off</strong>
             </p>
           </div>
           <div className="inc">
