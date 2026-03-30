@@ -221,7 +221,7 @@ a.btn-p{color:#fff!important;text-decoration:none}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 @media(max-width:900px){.g4,.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.g4,.g3,.g2{grid-template-columns:1fr}}
+@media(max-width:600px){.g4,.g3,.g2,.about-g{grid-template-columns:1fr}}
 
 .card{border:1.5px solid #E2E8F0;border-radius:16px;padding:28px;background:#fff;transition:all .2s}
 .card:hover{border-color:#CBD5E1;box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-3px)}
@@ -341,7 +341,7 @@ function TopBar() {
 function Nav() {
   const [mob, setMob] = useState(false);
   const links = [
-    { l: "Curriculum", h: "#curriculum" }, { l: "Syllabus", h: "#syllabus" },
+    { l: "About", h: "#about" }, { l: "Curriculum", h: "#curriculum" }, { l: "Syllabus", h: "#syllabus" },
     { l: "Journey", h: "#journey" }, { l: "Tracking", h: "#tracking" }, { l: "Pricing", h: "#pricing" }, { l: "FAQ", h: "#faq" },
   ];
   return (
@@ -499,6 +499,71 @@ function SyllabusTable() {
           <a href={ENROLL_URL} className="btn btn-p" style={{ fontSize: 16, padding: "14px 32px" }}>
             Enroll Now - Limited Seats <ArrowRight size={16} />
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutCourse() {
+  const r = useAnim();
+  return (
+    <section className="sec" id="about" ref={r}>
+      <div className="wrap">
+        <div data-a style={{ textAlign: "center", marginBottom: 48 }}>
+          <p className="label" style={{ color: "#2563EB" }}>About the Course</p>
+          <h2 className="h2">What is <span className="grad">Agent Builder?</span></h2>
+          <p className="sub" style={{ margin: "0 auto" }}>A 6-week intensive where you go from writing Python scripts to building, deploying, and monitoring multi-agent AI systems that run in production.</p>
+        </div>
+        <div data-a style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+
+          <div className="card" style={{ borderTop: "4px solid #2563EB" }}>
+            <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "#0F172A" }}>What you'll actually learn</h3>
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
+              You start where it matters - the <strong style={{ color: "#0F172A" }}>orchestration layer</strong>. LangGraph teaches you how agents actually work under the hood: state management, graph execution, persistence, streaming, and human-in-the-loop patterns. Most courses skip this. We don't.
+            </p>
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
+              Then you move to <strong style={{ color: "#0F172A" }}>LangChain v1.0</strong> - agents with tools, middleware, guardrails, RAG pipelines, structured output, long-term memory, multi-agent coordination, and MCP integration.
+            </p>
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
+              Final week: <strong style={{ color: "#0F172A" }}>Deep Agents</strong> for harness-level control with subagent delegation and sandboxed execution. <strong style={{ color: "#0F172A" }}>LangSmith</strong> for tracing every decision, evaluating quality, and monitoring production costs.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            <div className="card" style={{ borderTop: "4px solid #059669" }}>
+              <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "#0F172A" }}>How the course works</h3>
+              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
+                12 live sessions. 2 per week. 2 hours each. Every session is followed by a <strong style={{ color: "#0F172A" }}>mandatory assignment</strong> that gets graded with detailed written feedback.
+              </p>
+              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
+                Your attendance, submission rate, code quality, and engagement are <strong style={{ color: "#0F172A" }}>tracked and ranked</strong> against the cohort - transparently. The course ends with a <strong style={{ color: "#0F172A" }}>live capstone presentation</strong> in front of a panel. Recorded. Evaluated. Portfolio-ready.
+              </p>
+            </div>
+
+            <div className="card" style={{ borderTop: "4px solid #7C3AED" }}>
+              <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "#0F172A" }}>Who is this for</h3>
+              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
+                You can write Python. You understand what an API call is. You want to build AI systems that actually work in production - not just notebook demos. <strong style={{ color: "#0F172A" }}>No ML background needed. No prior LangChain experience needed.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div data-a style={{ marginTop: 24 }}>
+          <div className="card" style={{ borderTop: "4px solid #D97706", textAlign: "center", padding: 32 }}>
+            <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 12, color: "#0F172A" }}>The Stack</h3>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, flexWrap: "wrap", fontSize: 15, fontWeight: 600 }}>
+              <span style={{ color: "#2563EB", background: "#EFF6FF", padding: "8px 18px", borderRadius: 10, border: "1px solid #BFDBFE" }}>LangGraph</span>
+              <span style={{ color: "#94A3B8", fontSize: 20 }}>→</span>
+              <span style={{ color: "#059669", background: "#ECFDF5", padding: "8px 18px", borderRadius: 10, border: "1px solid #A7F3D0" }}>LangChain v1.0</span>
+              <span style={{ color: "#94A3B8", fontSize: 20 }}>→</span>
+              <span style={{ color: "#7C3AED", background: "#F5F3FF", padding: "8px 18px", borderRadius: 10, border: "1px solid #C4B5FD" }}>Deep Agents</span>
+              <span style={{ color: "#94A3B8", fontSize: 20 }}>→</span>
+              <span style={{ color: "#D97706", background: "#FFFBEB", padding: "8px 18px", borderRadius: 10, border: "1px solid #FDE68A" }}>LangSmith</span>
+            </div>
+            <p style={{ fontSize: 14, color: "#64748B", marginTop: 14 }}>Four frameworks. One logical sequence. The complete production agent stack.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -849,6 +914,7 @@ export default function App() {
       <Nav />
       <Hero />
       <NumbersBar />
+      <AboutCourse />
       <Frameworks />
       <JourneySection />
       <CurriculumSection />
