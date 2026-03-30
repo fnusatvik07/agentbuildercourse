@@ -806,23 +806,34 @@ function InstructorSection() {
     <section className="sec" id="instructor" ref={r}>
       <div className="wrap">
         <div data-a style={{ textAlign: "center", marginBottom: 40 }}>
-          <p className="label" style={{ color: "#D97706" }}>Your Instructor</p>
-          <h2 className="h2">Learn from a Practitioner</h2>
+          <p className="label" style={{ color: "#D97706" }}>Who's Behind This</p>
+          <h2 className="h2">Built by <span className="grad">DataSense</span></h2>
         </div>
-        <div className="inst" data-a>
-          <div className="av">YN</div>
-          <div>
-            <h3 style={{ fontSize: 22, fontWeight: 900, color: "#0F172A", marginBottom: 4 }}>Your Name</h3>
-            <p style={{ color: "#2563EB", fontWeight: 600, fontSize: 14, marginBottom: 12 }}>AI Engineer & Educator at DataSense</p>
-            <p style={{ color: "#64748B", lineHeight: 1.7, fontSize: 15, marginBottom: 16 }}>
-              [Your bio - e.g., "X years building AI systems. Previously at [Company]. Passionate about making AI engineering accessible. Helped 500+ engineers transition into AI roles."]
+        <div data-a style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div className="inst" style={{ flexDirection: "column", textAlign: "center", padding: "40px 36px" }}>
+            <div className="av" style={{ margin: "0 auto 20px", width: 100, height: 100, fontSize: 28 }}>DS</div>
+            <h3 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", marginBottom: 4 }}>DataSense</h3>
+            <p style={{ color: "#2563EB", fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Top 1% on Topmate</p>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 16, fontSize: 13, color: "#64748B" }}>
+              <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Star size={14} color="#D97706" /> 4.8/5 rating</span>
+              <span>128+ ratings</span>
+              <span>103 testimonials</span>
+            </div>
+            <p style={{ color: "#475569", lineHeight: 1.7, fontSize: 15, marginBottom: 20, maxWidth: 560, margin: "0 auto 20px" }}>
+              Data Sense is a platform dedicated to helping individuals grow in Data Analytics, Machine Learning, and AI. Through engaging events, challenges, and real-world case studies, we provide practical learning opportunities. Join our community to collaborate, learn, and stay updated with the latest in the data-driven world.
             </p>
-            <div style={{ display: "flex", gap: 12 }}>
-              {[Globe, AtSign, Link].map((Icon, i) => (
-                <a key={i} href="#" style={{ width: 36, height: 36, borderRadius: 10, background: "#F1F5F9", display: "flex", alignItems: "center", justifyContent: "center", color: "#64748B", transition: "all .15s" }}>
-                  <Icon size={16} />
-                </a>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 20 }}>
+              {["AI & ML", "Data Analytics", "Gen AI Projects", "SQL", "Python", "RAG Systems", "AI Agents"].map((tag, i) => (
+                <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: "4px 12px", borderRadius: 6, background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>{tag}</span>
               ))}
+            </div>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+              <a href="https://topmate.io/datasense" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: "#2563EB", background: "#EFF6FF", padding: "8px 16px", borderRadius: 8, border: "1px solid #BFDBFE", textDecoration: "none" }}>
+                <Globe size={14} /> Topmate Profile
+              </a>
+              <a href={WHATSAPP_GROUP} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: "#059669", background: "#ECFDF5", padding: "8px 16px", borderRadius: 8, border: "1px solid #A7F3D0", textDecoration: "none" }}>
+                <MessageSquare size={14} /> Join WhatsApp Community
+              </a>
             </div>
           </div>
         </div>
