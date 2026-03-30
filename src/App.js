@@ -83,7 +83,7 @@ const FAQS = [
   { q: "How does the capstone work?", a: "You build an enterprise AI platform over 2 weeks post-course, then present it LIVE in front of a panel audience. It's recorded and evaluated on architecture, code quality, and communication skills." },
   { q: "What tools do I need?", a: "Python 3.11+, VS Code, and an OpenAI or Anthropic API key (free tier works for most exercises). Full setup walkthrough in Session 1." },
   { q: "How are assignments evaluated?", a: "Each assignment has a detailed rubric covering correctness, code quality, architecture decisions, and production-readiness. Written feedback within 3 days of submission." },
-  { q: "Is there a community or support?", a: "Yes - you get access to a private Discord/WhatsApp community and direct access to the instructor throughout the course and beyond." },
+  { q: "Is there a community or support?", a: "Yes - you get access to a private WhatsApp community and direct access to the instructor throughout the course and beyond." },
   { q: "What's the refund policy?", a: "Full refund within 7 days of course start if you've attended no more than 2 sessions. No questions asked." },
   { q: "Who is this course for?", a: "Developers and engineers who can write Python and want to build production AI agent systems. You don't need ML or deep learning experience - just Python, APIs, and the drive to build." },
   { q: "How is this different from YouTube tutorials?", a: "Tutorials show you how to call an API. This course teaches you how to architect, build, and ship agent systems. Every session has a mandatory assignment, your progress is tracked, and the capstone is a live presentation - not a passive video experience." },
@@ -102,9 +102,9 @@ const INCLUDED = [
   { t: "Capstone project with mentorship", i: Rocket },
   { t: "Study notes & cheat sheets", i: BookOpen },
   { t: "Starter code & solution repos", i: Code2 },
-  { t: "Private community access", i: MessageSquare },
+  { t: "Private WhatsApp community", i: MessageSquare },
   { t: "Certificate of completion", i: Award },
-  { t: "Private Discord community", i: Users },
+  { t: "Private WhatsApp community", i: Users },
   { t: "Resume & portfolio review", i: Target },
 ];
 
@@ -341,7 +341,7 @@ function TopBar() {
 function Nav() {
   const [mob, setMob] = useState(false);
   const links = [
-    { l: "About", h: "#about" }, { l: "Curriculum", h: "#curriculum" }, { l: "Syllabus", h: "#syllabus" },
+    { l: "About", h: "#about" }, { l: "Curriculum", h: "#curriculum" },
     { l: "Journey", h: "#journey" }, { l: "Tracking", h: "#tracking" }, { l: "Pricing", h: "#pricing" }, { l: "FAQ", h: "#faq" },
   ];
   return (
@@ -393,7 +393,7 @@ function Hero() {
               Master LangGraph, LangChain v1.0, Deep Agents & LangSmith in 6 weeks. Ship agents, not demos.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 40 }}>
-              <a href={ENROLL_URL} className="btn btn-p" style={{ fontSize: 15, padding: "13px 28px" }}>Enroll Now - $100 <ArrowRight size={16} /></a>
+              <a href={ENROLL_URL} className="btn btn-p" style={{ fontSize: 15, padding: "13px 28px" }}>Enroll Now <ArrowRight size={16} /></a>
               <a href="#curriculum" className="btn btn-o" style={{ fontSize: 15, padding: "13px 28px" }}>View Curriculum <ArrowDown size={16} /></a>
             </div>
             <div style={{ display: "flex", gap: 36, flexWrap: "wrap" }}>
@@ -453,7 +453,7 @@ function SyllabusTable() {
           <p className="label" style={{ color: "#0F172A" }}>Detailed Syllabus</p>
           <h2 className="h2">Session-by-Session <span className="grad">Breakdown</span></h2>
           <p className="sub" style={{ margin: "0 auto 24px" }}>Every topic sourced from official documentation. Click any row to see full details.</p>
-          <a href={ENROLL_URL} className="btn btn-p">Enroll Now - $100 <ArrowRight size={15} /></a>
+          <a href={ENROLL_URL} className="btn btn-p">Enroll Now <ArrowRight size={15} /></a>
         </div>
         <div data-a style={{ overflowX: "auto" }}>
           <table className="syl">
@@ -632,7 +632,7 @@ function JourneySection() {
             </div>
           ))}
         </div>
-        <div className="j-grid" data-a style={{ marginTop: 16 }}>
+        <div data-a style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 16, maxWidth: 900, margin: "16px auto 0" }}>
           {JOURNEY_STEPS.slice(4).map((s, i) => (
             <div key={i} className="j-card" style={{ background: s.bg }}>
               <div className="j-num">{i + 5}</div>
