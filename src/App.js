@@ -165,7 +165,7 @@ const NUMBERS = [
   { value: "80+", label: "Topics Covered", color: "#7C3AED" },
   { value: "4", label: "Frameworks Mastered", color: "#D97706" },
   { value: "5", label: "Graded Assignments", color: "#EF4444" },
-  { value: "1", label: "Live Capstone Presentation", color: "#0F172A" },
+  { value: "1", label: "Live Capstone Presentation", color: "var(--tx)" },
 ];
 
 /* ═══════════════ CSS ═══════════════ */
@@ -178,7 +178,26 @@ body{overflow-x:hidden}
 
 /* ── Theme vars ── */
 :root{--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--bgc:#FFFFFF;--tx:#0F172A;--tx2:#475569;--tx3:#64748B;--tx4:#94A3B8;--bd:#E2E8F0;--bd2:#F1F5F9;--hero-bg:linear-gradient(180deg,#EFF6FF,#fff);--nav-bg:rgba(255,255,255,.95);--mob-bg:rgba(255,255,255,.98);--syl-bg:#EFF6FF;--cap-bg:linear-gradient(135deg,#F5F3FF,#EFF6FF)}
-[data-theme="dark"]{--bg:#0F172A;--bg2:#1E293B;--bg3:#334155;--bgc:#1E293B;--tx:#F1F5F9;--tx2:#CBD5E1;--tx3:#94A3B8;--tx4:#64748B;--bd:#334155;--bd2:#1E293B;--hero-bg:linear-gradient(180deg,#1E293B,#0F172A);--nav-bg:rgba(15,23,42,.95);--mob-bg:rgba(15,23,42,.98);--syl-bg:#1E293B;--cap-bg:linear-gradient(135deg,#1E1B4B,#1E293B)}
+[data-theme="dark"]{--bg:#0F172A;--bg2:#1E293B;--bg3:#334155;--bgc:#1E293B;--tx:#F1F5F9;--tx2:#CBD5E1;--tx3:#94A3B8;--tx4:#64748B;--bd:#475569;--bd2:#334155;--hero-bg:linear-gradient(180deg,#1E293B,#0F172A);--nav-bg:rgba(15,23,42,.95);--mob-bg:rgba(15,23,42,.98);--syl-bg:#1E293B;--cap-bg:linear-gradient(135deg,#1E1B4B,#1E293B)}
+[data-theme="dark"] .card{background:var(--bgc);border-color:var(--bd)}
+[data-theme="dark"] .card:hover{border-color:#3B82F6}
+[data-theme="dark"] .j-card{background:var(--bg2)!important}
+[data-theme="dark"] .wk{background:var(--bgc);border-color:var(--bd)}
+[data-theme="dark"] .ss{background:var(--bg2);border-color:var(--bd2)}
+[data-theme="dark"] .fq{background:var(--bgc);border-color:var(--bd)}
+[data-theme="dark"] .price{background:var(--bgc);border-color:#3B82F6}
+[data-theme="dark"] .inst{background:var(--bgc);border-color:var(--bd)}
+[data-theme="dark"] .num-card{background:var(--bgc);border-color:var(--bd)}
+[data-theme="dark"] .tbl{border-color:var(--bd)}
+[data-theme="dark"] .tbl th{background:var(--bg3)}
+[data-theme="dark"] .tbl td{border-color:var(--bd2)}
+[data-theme="dark"] .syl{border-color:var(--bd)}
+[data-theme="dark"] .syl td{background:var(--bgc)}
+[data-theme="dark"] .syl tbody tr:nth-child(even) td{background:var(--bg2)}
+[data-theme="dark"] .cap{background:var(--bg2);border-color:#7C3AED}
+[data-theme="dark"] .asgn{background:var(--bg2)!important;border-color:var(--bd)!important}
+[data-theme="dark"] .tech{background:var(--bg2)!important}
+[data-theme="dark"] strong{color:var(--tx)!important}
 
 .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
 @media(max-width:600px){.wrap{padding:0 16px}}
@@ -497,7 +516,7 @@ function SyllabusTable() {
     <section className="sec sec-blue" id="syllabus" ref={r}>
       <div className="wrap">
         <div data-a style={{ textAlign: "center", marginBottom: 48 }}>
-          <p className="label" style={{ color: "#0F172A" }}>Detailed Syllabus</p>
+          <p className="label" style={{ color: "var(--tx)" }}>Detailed Syllabus</p>
           <h2 className="h2">Session-by-Session <span className="grad">Breakdown</span></h2>
           <p className="sub" style={{ margin: "0 auto 24px" }}>Every topic sourced from official documentation. Click any row to see full details.</p>
           <a href={ENROLL_URL} className="btn btn-p">Enroll Now <ArrowRight size={15} /></a>
@@ -521,7 +540,7 @@ function SyllabusTable() {
                   <td>
                     <span className="fw-badge" style={{ background: `${s.color}12`, color: s.color }}>{s.framework}</span>
                   </td>
-                  <td style={{ fontWeight: 600, color: "#0F172A", fontSize: 14 }}>{s.title}</td>
+                  <td style={{ fontWeight: 600, color: "var(--tx)", fontSize: 14 }}>{s.title}</td>
                   <td>
                     <div className="syl-detail">
                       {(expanded[s.session] ? s.details : s.details.slice(0, 3)).map((d, i) => (
@@ -565,33 +584,33 @@ function AboutCourse() {
         <div data-a className="about-grid">
 
           <div className="card" style={{ borderTop: "4px solid #2563EB" }}>
-            <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "#0F172A" }}>What you'll actually learn</h3>
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
-              You start where it matters - the <strong style={{ color: "#0F172A" }}>orchestration layer</strong>. LangGraph teaches you how agents actually work under the hood: state management, graph execution, persistence, streaming, and human-in-the-loop patterns. Most courses skip this. We don't.
+            <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "var(--tx)" }}>What you'll actually learn</h3>
+            <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7, marginBottom: 12 }}>
+              You start where it matters - the <strong style={{ color: "var(--tx)" }}>orchestration layer</strong>. LangGraph teaches you how agents actually work under the hood: state management, graph execution, persistence, streaming, and human-in-the-loop patterns. Most courses skip this. We don't.
             </p>
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
-              Then you move to <strong style={{ color: "#0F172A" }}>LangChain v1.0</strong> - agents with tools, middleware, guardrails, RAG pipelines, structured output, long-term memory, multi-agent coordination, and MCP integration.
+            <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7, marginBottom: 12 }}>
+              Then you move to <strong style={{ color: "var(--tx)" }}>LangChain v1.0</strong> - agents with tools, middleware, guardrails, RAG pipelines, structured output, long-term memory, multi-agent coordination, and MCP integration.
             </p>
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
-              Final week: <strong style={{ color: "#0F172A" }}>Deep Agents</strong> for harness-level control with subagent delegation and sandboxed execution. <strong style={{ color: "#0F172A" }}>LangSmith</strong> for tracing every decision, evaluating quality, and monitoring production costs.
+            <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7 }}>
+              Final week: <strong style={{ color: "var(--tx)" }}>Deep Agents</strong> for harness-level control with subagent delegation and sandboxed execution. <strong style={{ color: "var(--tx)" }}>LangSmith</strong> for tracing every decision, evaluating quality, and monitoring production costs.
             </p>
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <div className="card" style={{ borderTop: "4px solid #059669" }}>
-              <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "#0F172A" }}>How the course works</h3>
-              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7, marginBottom: 12 }}>
-                12 live sessions. 2 per week. 2 hours each. Every session is followed by a <strong style={{ color: "#0F172A" }}>mandatory assignment</strong> that gets graded with detailed written feedback.
+              <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "var(--tx)" }}>How the course works</h3>
+              <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7, marginBottom: 12 }}>
+                12 live sessions. 2 per week. 2 hours each. Every session is followed by a <strong style={{ color: "var(--tx)" }}>mandatory assignment</strong> that gets graded with detailed written feedback.
               </p>
-              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
-                Your attendance, submission rate, code quality, and engagement are <strong style={{ color: "#0F172A" }}>tracked and ranked</strong> against the cohort - transparently. The course ends with a <strong style={{ color: "#0F172A" }}>live capstone presentation</strong> in front of a panel. Recorded. Evaluated. Portfolio-ready.
+              <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7 }}>
+                Your attendance, submission rate, code quality, and engagement are <strong style={{ color: "var(--tx)" }}>tracked and ranked</strong> against the cohort - transparently. The course ends with a <strong style={{ color: "var(--tx)" }}>live capstone presentation</strong> in front of a panel. Recorded. Evaluated. Portfolio-ready.
               </p>
             </div>
 
             <div className="card" style={{ borderTop: "4px solid #7C3AED" }}>
-              <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "#0F172A" }}>Who is this for</h3>
-              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
-                You can write Python. You understand what an API call is. You want to build AI systems that actually work in production - not just notebook demos. <strong style={{ color: "#0F172A" }}>No ML background needed. No prior LangChain experience needed.</strong>
+              <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "var(--tx)" }}>Who is this for</h3>
+              <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7 }}>
+                You can write Python. You understand what an API call is. You want to build AI systems that actually work in production - not just notebook demos. <strong style={{ color: "var(--tx)" }}>No ML background needed. No prior LangChain experience needed.</strong>
               </p>
             </div>
           </div>
@@ -599,17 +618,17 @@ function AboutCourse() {
 
         <div data-a style={{ marginTop: 24 }}>
           <div className="card" style={{ borderTop: "4px solid #D97706", textAlign: "center", padding: 32 }}>
-            <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 12, color: "#0F172A" }}>The Stack</h3>
+            <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 12, color: "var(--tx)" }}>The Stack</h3>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12, flexWrap: "wrap", fontSize: 15, fontWeight: 600 }}>
               <span style={{ color: "#2563EB", background: "#EFF6FF", padding: "8px 18px", borderRadius: 10, border: "1px solid #BFDBFE" }}>LangGraph</span>
-              <span style={{ color: "#94A3B8", fontSize: 20 }}>→</span>
+              <span style={{ color: "var(--tx4)", fontSize: 20 }}>→</span>
               <span style={{ color: "#059669", background: "#ECFDF5", padding: "8px 18px", borderRadius: 10, border: "1px solid #A7F3D0" }}>LangChain v1.0</span>
-              <span style={{ color: "#94A3B8", fontSize: 20 }}>→</span>
+              <span style={{ color: "var(--tx4)", fontSize: 20 }}>→</span>
               <span style={{ color: "#7C3AED", background: "#F5F3FF", padding: "8px 18px", borderRadius: 10, border: "1px solid #C4B5FD" }}>Deep Agents</span>
-              <span style={{ color: "#94A3B8", fontSize: 20 }}>→</span>
+              <span style={{ color: "var(--tx4)", fontSize: 20 }}>→</span>
               <span style={{ color: "#D97706", background: "#FFFBEB", padding: "8px 18px", borderRadius: 10, border: "1px solid #FDE68A" }}>LangSmith</span>
             </div>
-            <p style={{ fontSize: 14, color: "#64748B", marginTop: 14 }}>Four frameworks. One logical sequence. The complete production agent stack.</p>
+            <p style={{ fontSize: 14, color: "var(--tx3)", marginTop: 14 }}>Four frameworks. One logical sequence. The complete production agent stack.</p>
           </div>
         </div>
       </div>
@@ -635,13 +654,13 @@ function Frameworks() {
                   <f.icon size={22} color={f.color} />
                 </div>
                 <div>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>{f.name}</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: "var(--tx)" }}>{f.name}</div>
                   <div style={{ fontSize: 12, color: f.color, fontWeight: 600 }}>{f.tagline}</div>
                 </div>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 18 }}>
                 {f.points.map((p, i) => (
-                  <div key={i} style={{ display: "flex", gap: 8, fontSize: 14, color: "#475569", alignItems: "center" }}>
+                  <div key={i} style={{ display: "flex", gap: 8, fontSize: 14, color: "var(--tx2)", alignItems: "center" }}>
                     <CircleDot size={12} color={f.color} style={{ flexShrink: 0 }} /> {p}
                   </div>
                 ))}
@@ -671,11 +690,11 @@ function JourneySection() {
           {JOURNEY_STEPS.slice(0, 4).map((s, i) => (
             <div key={i} className="j-card" style={{ background: s.bg }}>
               <div className="j-num">{i + 1}</div>
-              <div style={{ width: 48, height: 48, borderRadius: 14, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", boxShadow: "0 2px 8px rgba(0,0,0,.06)" }}>
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: "var(--bgc)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", boxShadow: "0 2px 8px rgba(0,0,0,.06)" }}>
                 <s.icon size={22} color={s.color} />
               </div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 6 }}>{s.title}</div>
-              <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.55 }}>{s.desc}</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: "var(--tx)", marginBottom: 6 }}>{s.title}</div>
+              <div style={{ fontSize: 13, color: "var(--tx3)", lineHeight: 1.55 }}>{s.desc}</div>
             </div>
           ))}
         </div>
@@ -683,11 +702,11 @@ function JourneySection() {
           {JOURNEY_STEPS.slice(4).map((s, i) => (
             <div key={i} className="j-card" style={{ background: s.bg }}>
               <div className="j-num">{i + 5}</div>
-              <div style={{ width: 48, height: 48, borderRadius: 14, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", boxShadow: "0 2px 8px rgba(0,0,0,.06)" }}>
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: "var(--bgc)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", boxShadow: "0 2px 8px rgba(0,0,0,.06)" }}>
                 <s.icon size={22} color={s.color} />
               </div>
-              <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 6 }}>{s.title}</div>
-              <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.55 }}>{s.desc}</div>
+              <div style={{ fontSize: 15, fontWeight: 700, color: "var(--tx)", marginBottom: 6 }}>{s.title}</div>
+              <div style={{ fontSize: 13, color: "var(--tx3)", lineHeight: 1.55 }}>{s.desc}</div>
             </div>
           ))}
         </div>
@@ -716,8 +735,8 @@ function CurriculumSection() {
                     {w.week}
                   </div>
                   <div>
-                    <div style={{ fontWeight: 700, fontSize: 15, color: "#0F172A" }}>Week {w.week}: {w.theme}</div>
-                    <div style={{ fontSize: 12, color: "#94A3B8", marginTop: 1 }}>{w.sessions.length} sessions{w.assignment ? " + assignment" : ""}</div>
+                    <div style={{ fontWeight: 700, fontSize: 15, color: "var(--tx)" }}>Week {w.week}: {w.theme}</div>
+                    <div style={{ fontSize: 12, color: "var(--tx4)", marginTop: 1 }}>{w.sessions.length} sessions{w.assignment ? " + assignment" : ""}</div>
                   </div>
                 </div>
                 {ow[i] ? <ChevronDown size={18} color="#94A3B8" /> : <ChevronRight size={18} color="#94A3B8" />}
@@ -728,16 +747,16 @@ function CurriculumSection() {
                     <div key={s.n} className="ss">
                       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
                         <span style={{ width: 28, height: 28, borderRadius: 8, background: `${w.color}12`, color: w.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 800 }}>{s.n}</span>
-                        <h4 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>{s.title}</h4>
+                        <h4 style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)" }}>{s.title}</h4>
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 5, marginBottom: 14 }}>
                         {s.topics.map((t, j) => (
-                          <div key={j} style={{ display: "flex", gap: 8, fontSize: 13, color: "#475569", alignItems: "center" }}>
+                          <div key={j} style={{ display: "flex", gap: 8, fontSize: 13, color: "var(--tx2)", alignItems: "center" }}>
                             <CheckCircle2 size={13} color="#059669" style={{ flexShrink: 0 }} /> {t}
                           </div>
                         ))}
                       </div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>Build with</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "var(--tx4)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 6 }}>Build with</div>
                       <div style={{ display: "flex", flexWrap: "wrap" }}>
                         {s.tech.map((t, j) => (
                           <span key={j} className="tech" style={{ background: `${w.color}08`, color: w.color, border: `1px solid ${w.color}22` }}>{t}</span>
@@ -751,7 +770,7 @@ function CurriculumSection() {
                       <div>
                         <div style={{ fontSize: 14, fontWeight: 700, color: "#059669", marginBottom: 6 }}>{w.assignment.title}</div>
                         <div style={{ display: "flex", flexWrap: "wrap" }}>
-                          {w.assignment.tech.map((t, j) => <span key={j} className="tech" style={{ background: "#fff", color: "#059669", border: "1px solid #A7F3D0" }}>{t}</span>)}
+                          {w.assignment.tech.map((t, j) => <span key={j} className="tech" style={{ background: "var(--bgc)", color: "#059669", border: "1px solid #A7F3D0" }}>{t}</span>)}
                         </div>
                       </div>
                     </div>
@@ -762,21 +781,21 @@ function CurriculumSection() {
           ))}
           <div className="cap">
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-              <div style={{ width: 48, height: 48, borderRadius: 14, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div style={{ width: 48, height: 48, borderRadius: 14, background: "var(--bgc)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <Presentation size={24} color="#7C3AED" />
               </div>
               <div>
-                <h3 style={{ fontSize: 20, fontWeight: 900, color: "#0F172A" }}>Capstone: Live Presentation</h3>
+                <h3 style={{ fontSize: 20, fontWeight: 900, color: "var(--tx)" }}>Capstone: Live Presentation</h3>
                 <span style={{ fontSize: 12, color: "#7C3AED", fontWeight: 600 }}>2 weeks post-course</span>
               </div>
             </div>
-            <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.65, marginBottom: 16 }}>
-              Build an enterprise AI platform and <strong style={{ color: "#0F172A" }}>present it LIVE in front of a panel audience</strong>.
-              Your presentation is <strong style={{ color: "#0F172A" }}>recorded and evaluated</strong> on architecture, code quality, and communication.
+            <p style={{ fontSize: 15, color: "var(--tx2)", lineHeight: 1.65, marginBottom: 16 }}>
+              Build an enterprise AI platform and <strong style={{ color: "var(--tx)" }}>present it LIVE in front of a panel audience</strong>.
+              Your presentation is <strong style={{ color: "var(--tx)" }}>recorded and evaluated</strong> on architecture, code quality, and communication.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
               {["Multi-agent Orchestration", "LangGraph Persistence", "RAG + Hybrid Retrieval", "MCP Integration", "Deep Agent Harness", "LangSmith Tracing", "Production Deploy", "Live Demo & Q&A"].map((t, i) => (
-                <span key={i} className="tech" style={{ background: "#fff", color: "#7C3AED", border: "1px solid #C4B5FD", fontSize: 12, padding: "5px 14px" }}>{t}</span>
+                <span key={i} className="tech" style={{ background: "var(--bgc)", color: "#7C3AED", border: "1px solid #C4B5FD", fontSize: 12, padding: "5px 14px" }}>{t}</span>
               ))}
             </div>
           </div>
@@ -802,13 +821,13 @@ function TrackingSection() {
               <div style={{ width: 48, height: 48, borderRadius: 14, background: c.bg, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px" }}>
                 <c.icon size={22} color={c.color} />
               </div>
-              <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{c.name}</div>
-              <div style={{ fontSize: 13, color: "#64748B" }}>{c.desc}</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: "var(--tx)", marginBottom: 4 }}>{c.name}</div>
+              <div style={{ fontSize: 13, color: "var(--tx3)" }}>{c.desc}</div>
             </div>
           ))}
         </div>
         <div data-a>
-          <p style={{ textAlign: "center", fontSize: 14, fontWeight: 600, color: "#64748B", marginBottom: 20 }}>Sample Leaderboard - Previous Cohort</p>
+          <p style={{ textAlign: "center", fontSize: 14, fontWeight: 600, color: "var(--tx3)", marginBottom: 20 }}>Sample Leaderboard - Previous Cohort</p>
           <table className="tbl">
             <thead>
               <tr><th>Rank</th><th>Student</th><th>Attendance</th><th>Submission</th><th>Quality</th><th>Engagement</th><th>Overall</th></tr>
@@ -824,18 +843,18 @@ function TrackingSection() {
                 return (
                   <tr key={c.rank}>
                     <td><span className="rk" style={{ background: rc.bg, color: rc.fg }}>{c.rank}</span></td>
-                    <td style={{ fontWeight: 600, color: "#0F172A" }}>{c.name}</td>
-                    <td style={{ color: "#475569" }}>{c.att}</td>
-                    <td style={{ color: "#475569" }}>{c.sub}</td>
-                    <td style={{ color: "#475569" }}>{c.qual}</td>
-                    <td style={{ color: "#475569" }}>{c.eng}</td>
-                    <td><strong style={{ color: c.rank <= 3 ? "#059669" : "#0F172A", fontSize: 15 }}>{c.overall}</strong></td>
+                    <td style={{ fontWeight: 600, color: "var(--tx)" }}>{c.name}</td>
+                    <td style={{ color: "var(--tx2)" }}>{c.att}</td>
+                    <td style={{ color: "var(--tx2)" }}>{c.sub}</td>
+                    <td style={{ color: "var(--tx2)" }}>{c.qual}</td>
+                    <td style={{ color: "var(--tx2)" }}>{c.eng}</td>
+                    <td><strong style={{ color: c.rank <= 3 ? "#059669" : "var(--tx)", fontSize: 15 }}>{c.overall}</strong></td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
-          <p style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "#94A3B8" }}>
+          <p style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "var(--tx4)" }}>
             <Trophy size={14} color="#D97706" style={{ display: "inline", marginRight: 4, verticalAlign: "middle" }} />
             Top performers get featured, referral bonuses, and priority access to advanced cohorts.
           </p>
@@ -857,19 +876,19 @@ function InstructorSection() {
         <div data-a style={{ maxWidth: 800, margin: "0 auto" }}>
           <div className="inst" style={{ flexDirection: "column", textAlign: "center", padding: "40px 36px" }}>
             <div className="av" style={{ margin: "0 auto 20px", width: 100, height: 100, fontSize: 28 }}>DS</div>
-            <h3 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", marginBottom: 4 }}>DataSense</h3>
+            <h3 style={{ fontSize: 24, fontWeight: 900, color: "var(--tx)", marginBottom: 4 }}>DataSense</h3>
             <p style={{ color: "#2563EB", fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Top 1% on Topmate</p>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 16, fontSize: 13, color: "#64748B" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 16, fontSize: 13, color: "var(--tx3)" }}>
               <span style={{ display: "flex", alignItems: "center", gap: 4 }}><Star size={14} color="#D97706" /> 4.8/5 rating</span>
               <span>128+ ratings</span>
               <span>103 testimonials</span>
             </div>
-            <p style={{ color: "#475569", lineHeight: 1.7, fontSize: 15, marginBottom: 20, maxWidth: 560, margin: "0 auto 20px" }}>
+            <p style={{ color: "var(--tx2)", lineHeight: 1.7, fontSize: 15, marginBottom: 20, maxWidth: 560, margin: "0 auto 20px" }}>
               Data Sense is a platform dedicated to helping individuals grow in Data Analytics, Machine Learning, and AI. Through engaging events, challenges, and real-world case studies, we provide practical learning opportunities. Join our community to collaborate, learn, and stay updated with the latest in the data-driven world.
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 20 }}>
               {["AI & ML", "Data Analytics", "Gen AI Projects", "SQL", "Python", "RAG Systems", "AI Agents"].map((tag, i) => (
-                <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: "4px 12px", borderRadius: 6, background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>{tag}</span>
+                <span key={i} style={{ fontSize: 12, fontWeight: 600, padding: "4px 12px", borderRadius: 6, background: "var(--bg3)", color: "var(--tx2)", border: "1px solid var(--bd)" }}>{tag}</span>
               ))}
             </div>
             <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
@@ -897,19 +916,19 @@ function Pricing() {
           <h2 className="h2">Invest in Your AI Career</h2>
         </div>
         <div className="price" data-a>
-          <div style={{ fontSize: 52, fontWeight: 900, color: "#0F172A", marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ fontSize: 52, fontWeight: 900, color: "var(--tx)", marginBottom: 4, display: "flex", alignItems: "center", justifyContent: "center" }}>
             $100
           </div>
-          <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 16 }}>One-time payment &middot; Full access &middot; Lifetime recordings</p>
+          <p style={{ color: "var(--tx4)", fontSize: 14, marginBottom: 16 }}>One-time payment &middot; Full access &middot; Lifetime recordings</p>
           <div style={{ background: "#ECFDF5", border: "1.5px solid #A7F3D0", borderRadius: 12, padding: "16px 20px", marginBottom: 28 }}>
             <p style={{ fontSize: 16, fontWeight: 800, color: "#059669", marginBottom: 6 }}>45% OFF - Early Bird Offer</p>
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6 }}>
+            <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.6 }}>
               Use coupon code <span style={{ background: "#0F172A", color: "#fff", padding: "4px 12px", borderRadius: 6, fontWeight: 800, fontSize: 14, fontFamily: "monospace", letterSpacing: 1.5 }}>AGENTICAI</span> at checkout to get it at just <strong style={{ color: "#059669", fontSize: 16 }}>Rs 5,000</strong>
             </p>
           </div>
           <div className="inc">
             {INCLUDED.map((x, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "#475569" }}>
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "var(--tx2)" }}>
                 <x.i size={15} color="#059669" style={{ flexShrink: 0 }} /> {x.t}
               </div>
             ))}
@@ -917,7 +936,7 @@ function Pricing() {
           <a href={ENROLL_URL} className="btn btn-p" style={{ width: "100%", justifyContent: "center", fontSize: 16, padding: "15px 28px" }}>
             Enroll Now <ExternalLink size={16} />
           </a>
-          <p style={{ fontSize: 12, color: "#94A3B8", marginTop: 16 }}>7-day refund policy &middot; One-time payment</p>
+          <p style={{ fontSize: 12, color: "var(--tx4)", marginTop: 16 }}>7-day refund policy &middot; One-time payment</p>
         </div>
       </div>
     </section>
@@ -956,9 +975,9 @@ function Footer() {
       <div className="wrap" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <Brain size={18} color="#2563EB" />
-          <span style={{ fontWeight: 700, fontSize: 14, color: "#0F172A" }}>DataSense - Agent Builder</span>
+          <span style={{ fontWeight: 700, fontSize: 14, color: "var(--tx)" }}>DataSense - Agent Builder</span>
         </div>
-        <span style={{ fontSize: 12, color: "#94A3B8" }}>&copy; {new Date().getFullYear()} DataSense. All rights reserved.</span>
+        <span style={{ fontSize: 12, color: "var(--tx4)" }}>&copy; {new Date().getFullYear()} DataSense. All rights reserved.</span>
         <div style={{ display: "flex", gap: 20 }}>
           <a href="#">Privacy</a><a href="#">Terms</a><a href={ENROLL_URL}>Enroll</a>
         </div>
