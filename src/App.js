@@ -1026,7 +1026,15 @@ function TrackingSection() {
             </div>
 
             <div style={{ padding: "20px 32px", borderTop: "1.5px solid var(--bd)", textAlign: "center", background: "var(--bg2)" }}>
-              <p style={{ fontSize: 12, color: "var(--tx4)" }}>This is a real evaluation report from a previous DataSense cohort. Every student receives this level of detailed feedback.</p>
+              <p style={{ fontSize: 12, color: "var(--tx4)", marginBottom: 12 }}>This is a real evaluation report from a previous DataSense cohort. Every student receives this level of detailed feedback.</p>
+              <a
+                href={process.env.PUBLIC_URL + "/sample-evaluation.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-p btn-s"
+              >
+                <FileText size={14} /> View Original PDF Report
+              </a>
             </div>
           </div>
         </div>
