@@ -806,7 +806,6 @@ function CurriculumSection() {
 }
 
 function TrackingSection() {
-  const [showPdf, setShowPdf] = useState(false);
   const r = useAnim();
   return (
     <section className="sec sec-gray" id="tracking" ref={r}>
@@ -890,46 +889,145 @@ function TrackingSection() {
             <p className="label" style={{ color: "#7C3AED" }}>Individual Evaluation Reports</p>
             <h3 style={{ fontSize: 24, fontWeight: 800, color: "var(--tx)", marginBottom: 8 }}>Every Assignment Gets a Detailed Quality Report</h3>
             <p style={{ fontSize: 15, color: "var(--tx3)", maxWidth: 560, margin: "0 auto", lineHeight: 1.6 }}>
-              We don't just grade your work. You get a multi-page evaluation report covering architecture, code quality, what worked, what could be better, and a bottom-line summary.
+              We don't just grade your work. You get a multi-page evaluation covering architecture, code quality, what worked, what could be better, and a bottom-line summary.
             </p>
           </div>
 
-          <div className="card" style={{ padding: 32, borderTop: "4px solid #7C3AED", textAlign: "center" }}>
-            <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap", marginBottom: 20 }}>
+          {/* Score summary cards */}
+          <div className="card" style={{ padding: 0, borderTop: "4px solid #7C3AED", overflow: "hidden" }}>
+            <div style={{ padding: "28px 32px", textAlign: "center", borderBottom: "1.5px solid var(--bd)" }}>
+              <p style={{ fontSize: 13, color: "var(--tx4)", fontWeight: 600, marginBottom: 4 }}>SAMPLE REPORT - Previous Cohort Student</p>
+              <h4 style={{ fontSize: 20, fontWeight: 900, color: "var(--tx)" }}>RAG Architect - Week 1 Evaluation</h4>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", borderBottom: "1.5px solid var(--bd)" }}>
               {[
-                { label: "Architecture Review", score: "88/100", color: "#2563EB" },
-                { label: "Code Quality", score: "98/100", color: "#059669" },
-                { label: "Code Sanity & AI Detection", score: "24/25", color: "#7C3AED" },
-                { label: "Grand Total", score: "186/200 (A)", color: "#D97706" },
+                { label: "Architecture", score: "88", max: "100", color: "#2563EB" },
+                { label: "Code Quality", score: "98", max: "100", color: "#059669" },
+                { label: "Code Sanity", score: "24", max: "25", color: "#7C3AED" },
+                { label: "Grand Total", score: "186", max: "200", color: "#D97706", grade: "A" },
               ].map((item, i) => (
-                <div key={i} style={{ background: "var(--bg2)", borderRadius: 12, padding: "14px 20px", minWidth: 140 }}>
-                  <div style={{ fontSize: 22, fontWeight: 900, color: item.color }}>{item.score}</div>
-                  <div style={{ fontSize: 12, color: "var(--tx3)", fontWeight: 600, marginTop: 2 }}>{item.label}</div>
+                <div key={i} style={{ padding: "24px 16px", textAlign: "center", borderRight: i < 3 ? "1.5px solid var(--bd)" : "none" }}>
+                  <div style={{ fontSize: 32, fontWeight: 900, color: item.color, lineHeight: 1 }}>{item.score}</div>
+                  <div style={{ fontSize: 12, color: "var(--tx4)", marginTop: 2 }}>/ {item.max}{item.grade ? ` (${item.grade})` : ""}</div>
+                  <div style={{ fontSize: 13, color: "var(--tx2)", fontWeight: 600, marginTop: 6 }}>{item.label}</div>
                 </div>
               ))}
             </div>
 
-            <p style={{ fontSize: 14, color: "var(--tx3)", marginBottom: 16, lineHeight: 1.6 }}>
-              Sample evaluation from a previous cohort student. Includes what worked, what could be better, code comparison with reference, and a detailed bottom-line summary.
-            </p>
+            {/* Detailed scoring table */}
+            <div style={{ padding: "24px 32px" }}>
+              <h4 style={{ fontSize: 15, fontWeight: 800, color: "var(--tx)", marginBottom: 16 }}>Part A: Architecture (88/100)</h4>
+              <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 24, fontSize: 13 }}>
+                <thead>
+                  <tr style={{ borderBottom: "2px solid var(--bd)" }}>
+                    <th style={{ textAlign: "left", padding: "8px 0", color: "var(--tx2)", fontWeight: 700 }}>Criteria</th>
+                    <th style={{ textAlign: "center", padding: "8px 12px", color: "var(--tx2)", fontWeight: 700, width: 60 }}>Max</th>
+                    <th style={{ textAlign: "center", padding: "8px 12px", color: "var(--tx2)", fontWeight: 700, width: 60 }}>Score</th>
+                    <th style={{ textAlign: "left", padding: "8px 0 8px 12px", color: "var(--tx2)", fontWeight: 700 }}>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { c: "Architecture Diagram", m: 20, s: 19, r: "Two Mermaid diagrams. Layered: Client, Ingestion, Governance, Embedding, Query Pipeline." },
+                    { c: "RAG Flow Explanation", m: 20, s: 17, r: "README covers features and flow. Could go deeper on data flow steps." },
+                    { c: "Retrieval + Embedding", m: 20, s: 17, r: "FAISS + OpenAI embeddings. Explained in diagram and features." },
+                    { c: "Reranker + Generation", m: 20, s: 17, r: "LLM reranker + grounded generation with citations. Diagrammed." },
+                    { c: "Bonus (Advanced Design)", m: 20, s: 18, r: "Multi-tenancy, versioning, governance, SHA256 dedup, latency tracking." },
+                  ].map((row, i) => (
+                    <tr key={i} style={{ borderBottom: "1px solid var(--bd2)" }}>
+                      <td style={{ padding: "10px 0", color: "var(--tx)", fontWeight: 500 }}>{row.c}</td>
+                      <td style={{ textAlign: "center", padding: "10px 12px", color: "var(--tx3)" }}>{row.m}</td>
+                      <td style={{ textAlign: "center", padding: "10px 12px", color: "#059669", fontWeight: 700 }}>{row.s}</td>
+                      <td style={{ padding: "10px 0 10px 12px", color: "var(--tx3)", fontSize: 12 }}>{row.r}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
 
-            <button
-              onClick={() => setShowPdf(!showPdf)}
-              className="btn btn-p"
-              style={{ margin: "0 auto" }}
-            >
-              <FileText size={16} /> {showPdf ? "Hide Report" : "View Sample Evaluation Report"}
-            </button>
+              <h4 style={{ fontSize: 15, fontWeight: 800, color: "var(--tx)", marginBottom: 16 }}>Part B: Code (98/100)</h4>
+              <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 24, fontSize: 13 }}>
+                <thead>
+                  <tr style={{ borderBottom: "2px solid var(--bd)" }}>
+                    <th style={{ textAlign: "left", padding: "8px 0", color: "var(--tx2)", fontWeight: 700 }}>Criteria</th>
+                    <th style={{ textAlign: "center", padding: "8px 12px", color: "var(--tx2)", fontWeight: 700, width: 60 }}>Max</th>
+                    <th style={{ textAlign: "center", padding: "8px 12px", color: "var(--tx2)", fontWeight: 700, width: 60 }}>Score</th>
+                    <th style={{ textAlign: "left", padding: "8px 0 8px 12px", color: "var(--tx2)", fontWeight: 700 }}>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { c: "Ingestion & Chunking", m: 15, s: 15, r: "Full pipeline: PDF extract, page tracking, SHA256, versioned records." },
+                    { c: "Embedding & Vector Storage", m: 15, s: 15, r: "FAISS + OpenAI embeddings. Manifest governance. Dedup. Version lifecycle." },
+                    { c: "Retrieval (Top-K)", m: 15, s: 14, r: "FAISS similarity search. Tenant-aware. Returns full metadata." },
+                    { c: "Reranking", m: 15, s: 14, r: "LLM-based reranker with fallback. Original implementation." },
+                    { c: "Answer Generation", m: 15, s: 14, r: "Original prompt. Inline citations. Enterprise-style system prompt." },
+                    { c: "Code Sanity & AI Detection", m: 25, s: 24, r: "Full CLI, FastAPI, Streamlit UI, test script, screenshots. Excellent." },
+                  ].map((row, i) => (
+                    <tr key={i} style={{ borderBottom: "1px solid var(--bd2)" }}>
+                      <td style={{ padding: "10px 0", color: "var(--tx)", fontWeight: 500 }}>{row.c}</td>
+                      <td style={{ textAlign: "center", padding: "10px 12px", color: "var(--tx3)" }}>{row.m}</td>
+                      <td style={{ textAlign: "center", padding: "10px 12px", color: "#059669", fontWeight: 700 }}>{row.s}</td>
+                      <td style={{ padding: "10px 0 10px 12px", color: "var(--tx3)", fontSize: 12 }}>{row.r}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
 
-            {showPdf && (
-              <div style={{ marginTop: 20, borderRadius: 14, overflow: "hidden", border: "1.5px solid var(--bd)" }}>
-                <iframe
-                  src={process.env.PUBLIC_URL + "/sample-evaluation.pdf"}
-                  title="Sample Evaluation Report"
-                  style={{ width: "100%", height: 700, border: "none", background: "#fff" }}
-                />
+              {/* Detailed Feedback */}
+              <div style={{ borderTop: "2px solid var(--bd)", paddingTop: 24 }}>
+                <h4 style={{ fontSize: 16, fontWeight: 800, color: "var(--tx)", marginBottom: 16 }}>Detailed Feedback</h4>
+
+                <div style={{ marginBottom: 20 }}>
+                  <h5 style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)", marginBottom: 8 }}>Architecture (88/100)</h5>
+                  <div style={{ marginBottom: 10 }}>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "#059669", marginBottom: 4 }}>What worked:</p>
+                    <ul style={{ fontSize: 13, color: "var(--tx2)", paddingLeft: 20, lineHeight: 1.7 }}>
+                      <li>Two Mermaid diagrams: one in a separate .mmd file and one inline in the README. Both are original and map to the actual code.</li>
+                      <li>Well structured README covering multi-tenancy, document governance, the RAG pipeline, citations, and latency tracking.</li>
+                      <li>Screenshots included showing the system actually running. Architecture diagram correctly shows the conditional path.</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "#D97706", marginBottom: 4 }}>What could be better:</p>
+                    <ul style={{ fontSize: 13, color: "var(--tx2)", paddingLeft: 20, lineHeight: 1.7 }}>
+                      <li>README could have a dedicated section explaining the data flow step by step. The feature list is good but a walkthrough would help.</li>
+                      <li>No discussion of why FAISS was chosen over Pinecone/Milvus, or why text-embedding-3-small was chosen. A few sentences on tradeoffs would show more depth.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 20 }}>
+                  <h5 style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)", marginBottom: 8 }}>Code (98/100)</h5>
+                  <div style={{ background: "var(--bg2)", borderRadius: 10, padding: 16, marginBottom: 10 }}>
+                    <p style={{ fontSize: 13, fontWeight: 700, color: "#2563EB", marginBottom: 4 }}>Comparison with reference code:</p>
+                    <p style={{ fontSize: 13, color: "var(--tx2)", lineHeight: 1.7 }}>
+                      Zero overlap with the instructor reference code. Completely different stack: FAISS instead of Pinecone, OpenAI embeddings via LangChain, LLM-based reranker, manifest-based governance. Every file is written from scratch.
+                    </p>
+                  </div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: "#059669", marginBottom: 4 }}>What worked:</p>
+                  <ul style={{ fontSize: 13, color: "var(--tx2)", paddingLeft: 20, lineHeight: 1.7, marginBottom: 10 }}>
+                    <li>Clean multi-tenancy with namespace isolation. Real multi-tenancy, not just a config variable.</li>
+                    <li>SHA256 file hashing, page-by-page text extraction, versioned record building. Clean and modular.</li>
+                    <li>Manifest-based governance with document versioning, duplicate detection, and lifecycle management.</li>
+                    <li>Complete CLI with three commands, FastAPI with debug mode, and full Streamlit UI with sidebar controls.</li>
+                    <li>End-to-end test script with latency measurement at each step.</li>
+                  </ul>
+                </div>
+
+                {/* Bottom Line */}
+                <div style={{ background: "var(--bg2)", borderRadius: 12, padding: 20, borderLeft: "4px solid #059669" }}>
+                  <h5 style={{ fontSize: 15, fontWeight: 800, color: "var(--tx)", marginBottom: 8 }}>Bottom Line</h5>
+                  <p style={{ fontSize: 14, color: "var(--tx2)", lineHeight: 1.7 }}>
+                    This is one of the strongest submissions. A completely original system with a different stack, enterprise features (multi-tenancy, manifest-based governance, version lifecycle, duplicate detection, latency tracking), and three interfaces (CLI, FastAPI, Streamlit). The code is well structured, the architecture is documented with Mermaid diagrams, and includes screenshots and a test script proving it works.
+                  </p>
+                </div>
               </div>
-            )}
+            </div>
+
+            <div style={{ padding: "20px 32px", borderTop: "1.5px solid var(--bd)", textAlign: "center", background: "var(--bg2)" }}>
+              <p style={{ fontSize: 12, color: "var(--tx4)" }}>This is a real evaluation report from a previous DataSense cohort. Every student receives this level of detailed feedback.</p>
+            </div>
           </div>
         </div>
       </div>
