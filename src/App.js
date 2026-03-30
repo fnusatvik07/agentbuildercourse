@@ -407,19 +407,12 @@ function Hero() {
               ))}
             </div>
           </div>
-          <div className="hero-r" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {FRAMEWORKS.map((f) => (
-              <div key={f.name} className="hrc">
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: f.bg, border: `1px solid ${f.border}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <f.icon size={20} color={f.color} />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A" }}>{f.name}</div>
-                  <div style={{ fontSize: 12, color: "#64748B" }}>{f.tagline}</div>
-                </div>
-                <span style={{ fontSize: 11, fontWeight: 700, color: f.color, background: f.bg, padding: "4px 10px", borderRadius: 6 }}>{f.count}x</span>
-              </div>
-            ))}
+          <div className="hero-r" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img
+              src={process.env.PUBLIC_URL + "/course-banner.png"}
+              alt="Agent Builder 2026"
+              style={{ width: "100%", maxWidth: 420, borderRadius: 24, boxShadow: "0 12px 40px rgba(0,0,0,.12)" }}
+            />
           </div>
         </div>
       </div>
