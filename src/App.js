@@ -806,58 +806,131 @@ function CurriculumSection() {
 }
 
 function TrackingSection() {
+  const [showPdf, setShowPdf] = useState(false);
   const r = useAnim();
   return (
     <section className="sec sec-gray" id="tracking" ref={r}>
       <div className="wrap">
         <div data-a style={{ textAlign: "center", marginBottom: 48 }}>
           <p className="label" style={{ color: "#EF4444" }}>Transparent Progress Tracking</p>
-          <h2 className="h2">We Track Every Student. <span className="grad">Transparently.</span></h2>
-          <p className="sub" style={{ margin: "0 auto" }}>Your performance is scored across 4 dimensions. Rankings are updated weekly and shared with the cohort.</p>
+          <h2 className="h2">We Track Every Student. <span className="grad">Personally.</span></h2>
+          <p className="sub" style={{ margin: "0 auto" }}>This isn't a course where you disappear after enrolling. Your performance is scored across 4 dimensions, ranked weekly, and shared with the cohort.</p>
         </div>
+
+        {/* 4 Tracking Parameters */}
         <div className="g4" data-a style={{ marginBottom: 40 }}>
           {TRACKING.map((c, i) => (
-            <div key={i} className="card" style={{ textAlign: "center", borderColor: c.bg, borderTop: `3px solid ${c.color}` }}>
-              <div style={{ width: 48, height: 48, borderRadius: 14, background: c.bg, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px" }}>
-                <c.icon size={22} color={c.color} />
+            <div key={i} className="card" style={{ textAlign: "center", borderTop: `4px solid ${c.color}` }}>
+              <div style={{ width: 52, height: 52, borderRadius: 14, background: c.bg, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px" }}>
+                <c.icon size={24} color={c.color} />
               </div>
-              <div style={{ fontSize: 16, fontWeight: 700, color: "var(--tx)", marginBottom: 4 }}>{c.name}</div>
-              <div style={{ fontSize: 13, color: "var(--tx3)" }}>{c.desc}</div>
+              <div style={{ fontSize: 17, fontWeight: 800, color: "var(--tx)", marginBottom: 6 }}>{c.name}</div>
+              <div style={{ fontSize: 14, color: "var(--tx3)", lineHeight: 1.5 }}>{c.desc}</div>
             </div>
           ))}
         </div>
+
+        {/* How scoring works */}
+        <div data-a className="card" style={{ textAlign: "center", padding: 32, marginBottom: 40, borderTop: "4px solid #2563EB" }}>
+          <h3 style={{ fontSize: 18, fontWeight: 800, color: "var(--tx)", marginBottom: 12 }}>How Your Score is Calculated</h3>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, flexWrap: "wrap", fontSize: 15, fontWeight: 700 }}>
+            <span style={{ color: "#2563EB" }}>Attendance</span>
+            <span style={{ color: "var(--tx4)" }}>+</span>
+            <span style={{ color: "#059669" }}>Submission</span>
+            <span style={{ color: "var(--tx4)" }}>+</span>
+            <span style={{ color: "#D97706" }}>Quality</span>
+            <span style={{ color: "var(--tx4)" }}>+</span>
+            <span style={{ color: "#EF4444" }}>Engagement</span>
+            <span style={{ color: "var(--tx4)" }}>=</span>
+            <span style={{ color: "var(--tx)", fontSize: 18 }}>Overall Score & Rank</span>
+          </div>
+          <p style={{ fontSize: 13, color: "var(--tx3)", marginTop: 10 }}>Rankings updated weekly. Shared transparently with the entire cohort.</p>
+        </div>
+
+        {/* Leaderboard */}
         <div data-a>
-          <p style={{ textAlign: "center", fontSize: 14, fontWeight: 600, color: "var(--tx3)", marginBottom: 20 }}>Sample Leaderboard - Previous Cohort</p>
-          <table className="tbl">
-            <thead>
-              <tr><th>Rank</th><th>Student</th><th>Attendance</th><th>Submission</th><th>Quality</th><th>Engagement</th><th>Overall</th></tr>
-            </thead>
-            <tbody>
-              {CANDIDATES.map((c) => {
-                const colors = [
-                  { bg: "#FEF3C7", fg: "#B45309" },
-                  { bg: "#F1F5F9", fg: "#475569" },
-                  { bg: "#FED7AA", fg: "#C2410C" },
-                ];
-                const rc = c.rank <= 3 ? colors[c.rank - 1] : { bg: "#F8FAFC", fg: "#94A3B8" };
-                return (
-                  <tr key={c.rank}>
-                    <td><span className="rk" style={{ background: rc.bg, color: rc.fg }}>{c.rank}</span></td>
-                    <td style={{ fontWeight: 600, color: "var(--tx)" }}>{c.name}</td>
-                    <td style={{ color: "var(--tx2)" }}>{c.att}</td>
-                    <td style={{ color: "var(--tx2)" }}>{c.sub}</td>
-                    <td style={{ color: "var(--tx2)" }}>{c.qual}</td>
-                    <td style={{ color: "var(--tx2)" }}>{c.eng}</td>
-                    <td><strong style={{ color: c.rank <= 3 ? "#059669" : "var(--tx)", fontSize: 15 }}>{c.overall}</strong></td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <p style={{ textAlign: "center", fontSize: 15, fontWeight: 700, color: "var(--tx2)", marginBottom: 20 }}>Sample Leaderboard - Previous Cohort</p>
+          <div style={{ overflowX: "auto" }}>
+            <table className="tbl">
+              <thead>
+                <tr><th>Rank</th><th>Student</th><th>Attendance</th><th>Submission</th><th>Quality</th><th>Engagement</th><th>Overall</th></tr>
+              </thead>
+              <tbody>
+                {CANDIDATES.map((c) => {
+                  const colors = [
+                    { bg: "#FEF3C7", fg: "#B45309" },
+                    { bg: "#E2E8F0", fg: "#475569" },
+                    { bg: "#FED7AA", fg: "#C2410C" },
+                  ];
+                  const rc = c.rank <= 3 ? colors[c.rank - 1] : { bg: "var(--bg3)", fg: "var(--tx4)" };
+                  return (
+                    <tr key={c.rank}>
+                      <td><span className="rk" style={{ background: rc.bg, color: rc.fg }}>{c.rank}</span></td>
+                      <td style={{ fontWeight: 600, color: "var(--tx)" }}>{c.name}</td>
+                      <td style={{ color: "var(--tx2)" }}>{c.att}</td>
+                      <td style={{ color: "var(--tx2)" }}>{c.sub}</td>
+                      <td style={{ color: "var(--tx2)" }}>{c.qual}</td>
+                      <td style={{ color: "var(--tx2)" }}>{c.eng}</td>
+                      <td><strong style={{ color: c.rank <= 3 ? "#059669" : "var(--tx)", fontSize: 15 }}>{c.overall}</strong></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
           <p style={{ textAlign: "center", marginTop: 18, fontSize: 13, color: "var(--tx4)" }}>
             <Trophy size={14} color="#D97706" style={{ display: "inline", marginRight: 4, verticalAlign: "middle" }} />
             Top performers get featured, referral bonuses, and priority access to advanced cohorts.
           </p>
+        </div>
+
+        {/* Individual Evaluation Report */}
+        <div data-a style={{ marginTop: 48 }}>
+          <div style={{ textAlign: "center", marginBottom: 24 }}>
+            <p className="label" style={{ color: "#7C3AED" }}>Individual Evaluation Reports</p>
+            <h3 style={{ fontSize: 24, fontWeight: 800, color: "var(--tx)", marginBottom: 8 }}>Every Assignment Gets a Detailed Quality Report</h3>
+            <p style={{ fontSize: 15, color: "var(--tx3)", maxWidth: 560, margin: "0 auto", lineHeight: 1.6 }}>
+              We don't just grade your work. You get a multi-page evaluation report covering architecture, code quality, what worked, what could be better, and a bottom-line summary.
+            </p>
+          </div>
+
+          <div className="card" style={{ padding: 32, borderTop: "4px solid #7C3AED", textAlign: "center" }}>
+            <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap", marginBottom: 20 }}>
+              {[
+                { label: "Architecture Review", score: "88/100", color: "#2563EB" },
+                { label: "Code Quality", score: "98/100", color: "#059669" },
+                { label: "Code Sanity & AI Detection", score: "24/25", color: "#7C3AED" },
+                { label: "Grand Total", score: "186/200 (A)", color: "#D97706" },
+              ].map((item, i) => (
+                <div key={i} style={{ background: "var(--bg2)", borderRadius: 12, padding: "14px 20px", minWidth: 140 }}>
+                  <div style={{ fontSize: 22, fontWeight: 900, color: item.color }}>{item.score}</div>
+                  <div style={{ fontSize: 12, color: "var(--tx3)", fontWeight: 600, marginTop: 2 }}>{item.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <p style={{ fontSize: 14, color: "var(--tx3)", marginBottom: 16, lineHeight: 1.6 }}>
+              Sample evaluation from a previous cohort student. Includes what worked, what could be better, code comparison with reference, and a detailed bottom-line summary.
+            </p>
+
+            <button
+              onClick={() => setShowPdf(!showPdf)}
+              className="btn btn-p"
+              style={{ margin: "0 auto" }}
+            >
+              <FileText size={16} /> {showPdf ? "Hide Report" : "View Sample Evaluation Report"}
+            </button>
+
+            {showPdf && (
+              <div style={{ marginTop: 20, borderRadius: 14, overflow: "hidden", border: "1.5px solid var(--bd)" }}>
+                <iframe
+                  src={process.env.PUBLIC_URL + "/sample-evaluation.pdf"}
+                  title="Sample Evaluation Report"
+                  style={{ width: "100%", height: 700, border: "none", background: "#fff" }}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
