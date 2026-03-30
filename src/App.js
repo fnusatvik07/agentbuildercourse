@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Brain, GitBranch, Layers, BarChart3, ChevronDown, ChevronRight, Users,
-  BookOpen, Code2, Zap, Shield, Target, Award, CheckCircle2, ArrowRight,
-  ArrowDown, Menu, X, ExternalLink, Globe, AtSign, Link, Play, FileText,
+  BookOpen, Code2, Zap, Target, Award, CheckCircle2, ArrowRight,
+  ArrowDown, Menu, X, ExternalLink, Globe, Play, FileText,
   MessageSquare, Star, Eye, Rocket, GraduationCap,
-  ChevronUp, CircleCheck, Trophy,
-  ClipboardCheck, BarChart, Presentation, CircleDot,
-  Flame, MonitorCheck, Briefcase,
+  ChevronUp, Trophy, ClipboardCheck, BarChart, Presentation, CircleDot,
+  Flame, Sun, Moon,
 } from "lucide-react";
 
 const ENROLL_URL = "https://topmate.io/datasense/2024678";
@@ -173,46 +172,65 @@ const NUMBERS = [
 const css = `
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-family:'Inter',system-ui,sans-serif;background:#FFFFFF;color:#0F172A}
+html{scroll-behavior:smooth;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--tx);transition:background .3s,color .3s}
 body{overflow-x:hidden}
 ::selection{background:#2563EB;color:#fff}
 
-.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
-@media(max-width:600px){.wrap{padding:0 20px}}
+/* ── Theme vars ── */
+:root{--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--bgc:#FFFFFF;--tx:#0F172A;--tx2:#475569;--tx3:#64748B;--tx4:#94A3B8;--bd:#E2E8F0;--bd2:#F1F5F9;--hero-bg:linear-gradient(180deg,#EFF6FF,#fff);--nav-bg:rgba(255,255,255,.95);--mob-bg:rgba(255,255,255,.98);--syl-bg:#EFF6FF;--cap-bg:linear-gradient(135deg,#F5F3FF,#EFF6FF)}
+[data-theme="dark"]{--bg:#0F172A;--bg2:#1E293B;--bg3:#334155;--bgc:#1E293B;--tx:#F1F5F9;--tx2:#CBD5E1;--tx3:#94A3B8;--tx4:#64748B;--bd:#334155;--bd2:#1E293B;--hero-bg:linear-gradient(180deg,#1E293B,#0F172A);--nav-bg:rgba(15,23,42,.95);--mob-bg:rgba(15,23,42,.98);--syl-bg:#1E293B;--cap-bg:linear-gradient(135deg,#1E1B4B,#1E293B)}
 
-.sec{padding:96px 0}
-.sec-gray{background:#F8FAFC}
-.sec-blue{background:linear-gradient(180deg,#EFF6FF 0%,#E0ECFF 100%)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+@media(max-width:600px){.wrap{padding:0 16px}}
+
+.sec{padding:80px 0}
+@media(max-width:600px){.sec{padding:56px 0}}
+.sec-gray{background:var(--bg2)}
+.sec-blue{background:var(--syl-bg)}
 
 .label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
-.h2{font-size:38px;font-weight:900;line-height:1.15;margin-bottom:14px;color:#0F172A}
-.sub{font-size:16px;color:#64748B;line-height:1.65;max-width:560px}
+.h2{font-size:38px;font-weight:900;line-height:1.15;margin-bottom:14px;color:var(--tx)}
+@media(max-width:600px){.h2{font-size:28px}}
+.sub{font-size:16px;color:var(--tx3);line-height:1.65;max-width:560px}
 .grad{background:linear-gradient(135deg,#2563EB,#059669);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* ── Top bar ── */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:101;background:#059669;padding:10px 0;text-align:center;font-size:13px;color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px}
-.topbar a{color:#fff;text-decoration:none;background:rgba(255,255,255,.2);padding:5px 14px;border-radius:6px;font-weight:700;font-size:12px;transition:background .15s;display:inline-flex;align-items:center;gap:5px}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:101;background:#059669;padding:8px 16px;text-align:center;font-size:12px;color:#fff;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.topbar a{color:#fff;text-decoration:none;background:rgba(255,255,255,.2);padding:5px 12px;border-radius:6px;font-weight:700;font-size:11px;transition:background .15s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
 .topbar a:hover{background:rgba(255,255,255,.35)}
 
 /* ── Nav ── */
-.nav{position:fixed;top:40px;left:0;right:0;z-index:100;padding:12px 0;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid #E2E8F0}
+.nav{position:fixed;top:36px;left:0;right:0;z-index:100;padding:10px 0;background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:1px solid var(--bd)}
+@media(max-width:600px){.nav{top:52px}}
 .nav-in{display:flex;align-items:center;justify-content:space-between}
-.nav-l{display:flex;align-items:center;gap:24px}
-.nav-l a{color:#475569;text-decoration:none;font-size:13px;font-weight:500;transition:color .15s}
-.nav-l a:hover{color:#0F172A}
+.nav-l{display:flex;align-items:center;gap:20px}
+.nav-l a{color:var(--tx3);text-decoration:none;font-size:13px;font-weight:500;transition:color .15s}
+.nav-l a:hover{color:var(--tx)}
 .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;transition:all .15s;border:none}
 .btn-p{background:#2563EB;color:#fff!important;font-weight:800}
 a.btn-p{color:#fff!important;text-decoration:none}
 .btn-p:hover{background:#1D4ED8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.25)}
-.btn-o{background:#fff;color:#0F172A;border:1.5px solid #CBD5E1}
+.btn-o{background:var(--bgc);color:var(--tx);border:1.5px solid var(--bd)}
 .btn-o:hover{border-color:#2563EB;color:#2563EB}
 .btn-s{padding:8px 16px;font-size:12px;border-radius:8px}
 
+/* ── Theme toggle ── */
+.theme-btn{background:none;border:1.5px solid var(--bd);border-radius:8px;padding:6px 8px;cursor:pointer;color:var(--tx2);display:flex;align-items:center;transition:all .15s}
+.theme-btn:hover{border-color:#2563EB;color:#2563EB}
+
+/* ── Seat counter ── */
+.seat-bar{background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;border-radius:12px;padding:14px 20px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:14px;font-weight:700;margin-top:20px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.85}}
+.seat-dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
 /* ── Hero ── */
-.hero{padding:150px 0 80px;background:linear-gradient(180deg,#EFF6FF 0%,#FFFFFF 100%);position:relative;overflow:hidden}
-.hero-dots{position:absolute;inset:0;opacity:.3;background-image:radial-gradient(#94A3B8 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse 50% 50% at 50% 30%,#000,transparent);-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 30%,#000,transparent)}
+.hero{padding:130px 0 70px;background:var(--hero-bg);position:relative;overflow:hidden}
+@media(max-width:600px){.hero{padding:110px 0 50px}}
+.hero-dots{position:absolute;inset:0;opacity:.3;background-image:radial-gradient(var(--tx4) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(ellipse 50% 50% at 50% 30%,#000,transparent);-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 30%,#000,transparent)}
 .hero-g{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;z-index:1}
-@media(max-width:900px){.hero-g{grid-template-columns:1fr}.hero-r{display:none!important}}
+@media(max-width:900px){.hero-g{grid-template-columns:1fr;text-align:center}.hero-r{margin-top:24px}}
+@media(max-width:600px){.hero h1{font-size:36px!important}}
 .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:50px;font-size:12px;font-weight:600}
 
 /* ── Grids ── */
@@ -220,90 +238,94 @@ a.btn-p{color:#fff!important;text-decoration:none}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 @media(max-width:900px){.g4,.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.g4,.g3,.g2,.about-g{grid-template-columns:1fr}}
+@media(max-width:600px){.g4,.g3,.g2{grid-template-columns:1fr}}
 
-.card{border:1.5px solid #E2E8F0;border-radius:16px;padding:28px;background:#fff;transition:all .2s}
-.card:hover{border-color:#CBD5E1;box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-3px)}
+.card{border:1.5px solid var(--bd);border-radius:16px;padding:28px;background:var(--bgc);transition:all .2s}
+@media(max-width:600px){.card{padding:20px}}
+.card:hover{border-color:#3B82F6;box-shadow:0 8px 24px rgba(0,0,0,.08);transform:translateY(-3px)}
 
 /* ── Numbers ── */
 .nums{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 @media(max-width:900px){.nums{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:500px){.nums{grid-template-columns:repeat(2,1fr)}}
-.num-card{text-align:center;padding:32px 16px;border-radius:16px;background:#fff;border:1.5px solid #E2E8F0;transition:all .2s;position:relative;overflow:hidden}
-.num-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.num-card{text-align:center;padding:28px 12px;border-radius:16px;background:var(--bgc);border:1.5px solid var(--bd);transition:all .2s;position:relative;overflow:hidden}
 .num-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.08)}
-.num-v{font-size:40px;font-weight:900;line-height:1}
-.num-l{font-size:13px;color:#475569;margin-top:8px;font-weight:600;line-height:1.3}
+.num-v{font-size:36px;font-weight:900;line-height:1}
+@media(max-width:600px){.num-v{font-size:28px}}
+.num-l{font-size:12px;color:var(--tx2);margin-top:8px;font-weight:600;line-height:1.3}
+
+/* ── About ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
 
 /* ── Syllabus table ── */
-.syl{width:100%;border-collapse:separate;border-spacing:0;border:2px solid #1E293B;border-radius:16px;overflow:hidden}
-.syl th{background:#0F172A;padding:16px 18px;text-align:left;font-size:12px;font-weight:700;color:#F8FAFC;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
-.syl td{padding:16px 18px;border-top:1.5px solid #E2E8F0;font-size:14px;color:#1E293B;vertical-align:top;background:#fff}
-.syl tbody tr:nth-child(even) td{background:#F8FAFC}
-.syl tbody tr:hover td{background:#EFF6FF}
-.syl .fw-badge{display:inline-block;padding:5px 12px;border-radius:8px;font-size:12px;font-weight:700;white-space:nowrap}
-.syl-detail{font-size:13px;color:#334155;line-height:1.6}
+.syl{width:100%;border-collapse:separate;border-spacing:0;border:2px solid var(--tx);border-radius:16px;overflow:hidden}
+.syl th{background:#0F172A;padding:14px 16px;text-align:left;font-size:11px;font-weight:700;color:#F8FAFC;text-transform:uppercase;letter-spacing:.8px;white-space:nowrap}
+.syl td{padding:14px 16px;border-top:1.5px solid var(--bd);font-size:13px;color:var(--tx);vertical-align:top;background:var(--bgc)}
+.syl tbody tr:nth-child(even) td{background:var(--bg2)}
+.syl tbody tr:hover td{background:var(--syl-bg)}
+.syl .fw-badge{display:inline-block;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:700;white-space:nowrap}
+.syl-detail{font-size:12px;color:var(--tx2);line-height:1.6}
 .syl-expand{cursor:pointer;color:#2563EB;font-size:12px;font-weight:700;background:none;border:none;padding:4px 0;margin-top:6px}
+@media(max-width:768px){.syl th:nth-child(1),.syl td:nth-child(1),.syl th:nth-child(2),.syl td:nth-child(2){display:none}}
 
 /* ── Journey ── */
 .j-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:900px){.j-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:500px){.j-grid{grid-template-columns:1fr}}
-.j-card{border-radius:16px;padding:24px;text-align:center;border:1.5px solid transparent;transition:all .2s;position:relative}
-.j-card:hover{border-color:#CBD5E1;box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px)}
-.j-num{position:absolute;top:12px;right:16px;font-size:42px;font-weight:900;opacity:.08;line-height:1}
+.j-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:16px auto 0}
+@media(max-width:900px){.j-grid,.j-grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.j-grid,.j-grid-3{grid-template-columns:1fr}}
+.j-card{border-radius:16px;padding:20px;text-align:center;border:1.5px solid transparent;transition:all .2s;position:relative}
+.j-card:hover{border-color:var(--bd);box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px)}
+.j-num{position:absolute;top:10px;right:14px;font-size:36px;font-weight:900;opacity:.08;line-height:1}
 
 /* ── Curriculum ── */
-.wk{border:1.5px solid #E2E8F0;border-radius:14px;margin-bottom:12px;overflow:hidden;background:#fff;transition:box-shadow .2s}
+.wk{border:1.5px solid var(--bd);border-radius:14px;margin-bottom:12px;overflow:hidden;background:var(--bgc);transition:box-shadow .2s}
 .wk:hover{box-shadow:0 2px 12px rgba(0,0,0,.05)}
-.wk-h{padding:18px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:background .15s}
-.wk-h:hover{background:#F8FAFC}
-.ss{border:1.5px solid #F1F5F9;border-radius:12px;padding:20px;margin-bottom:10px;background:#FAFBFC}
-.tech{display:inline-flex;align-items:center;padding:4px 12px;border-radius:7px;font-size:11px;font-weight:600;margin:3px}
-.asgn{border-radius:12px;padding:18px;margin-top:8px;display:flex;align-items:flex-start;gap:10px}
+.wk-h{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:background .15s}
+.wk-h:hover{background:var(--bg2)}
+.ss{border:1.5px solid var(--bd2);border-radius:12px;padding:18px;margin-bottom:10px;background:var(--bg2)}
+.tech{display:inline-flex;align-items:center;padding:4px 10px;border-radius:7px;font-size:11px;font-weight:600;margin:2px}
+.asgn{border-radius:12px;padding:16px;margin-top:8px;display:flex;align-items:flex-start;gap:10px}
 
 /* ── Table ── */
-.tbl{width:100%;border-collapse:separate;border-spacing:0;border:1.5px solid #E2E8F0;border-radius:14px;overflow:hidden}
-.tbl th{background:#F1F5F9;padding:14px 18px;text-align:left;font-size:12px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.5px}
-.tbl td{padding:14px 18px;border-top:1px solid #F1F5F9;font-size:14px}
-.tbl tbody tr:hover td{background:#F8FAFC}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;border:1.5px solid var(--bd);border-radius:14px;overflow:hidden}
+.tbl th{background:var(--bg3);padding:12px 16px;text-align:left;font-size:12px;font-weight:700;color:var(--tx2);text-transform:uppercase;letter-spacing:.5px}
+.tbl td{padding:12px 16px;border-top:1px solid var(--bd2);font-size:14px;color:var(--tx2)}
+.tbl tbody tr:hover td{background:var(--bg2)}
 .rk{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;font-weight:800;font-size:13px}
 
 /* ── Price ── */
-.price{max-width:520px;margin:0 auto;padding:44px;border:2px solid #2563EB;border-radius:24px;background:#fff;text-align:center;position:relative;overflow:hidden}
+.price{max-width:520px;margin:0 auto;padding:40px;border:2px solid #2563EB;border-radius:24px;background:var(--bgc);text-align:center;position:relative;overflow:hidden}
+@media(max-width:600px){.price{padding:28px 20px}}
 .price::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#2563EB,#059669,#7C3AED)}
 .inc{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;margin:24px 0}
 @media(max-width:520px){.inc{grid-template-columns:1fr}}
-.eb{display:inline-block;background:linear-gradient(135deg,#059669,#10B981);color:#fff;padding:5px 16px;border-radius:50px;font-size:12px;font-weight:700;margin-bottom:16px}
 
 /* ── FAQ ── */
-.fq{border:1.5px solid #E2E8F0;border-radius:12px;margin-bottom:10px;overflow:hidden;background:#fff}
-.fq-q{padding:18px 22px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;font-weight:600;font-size:15px;user-select:none;color:#0F172A;transition:background .15s}
-.fq-q:hover{background:#F8FAFC}
-.fq-a{padding:0 22px 18px;color:#64748B;line-height:1.7;font-size:14px}
-
+.fq{border:1.5px solid var(--bd);border-radius:12px;margin-bottom:10px;overflow:hidden;background:var(--bgc)}
+.fq-q{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;font-size:14px;user-select:none;color:var(--tx);transition:background .15s}
+.fq-q:hover{background:var(--bg2)}
+.fq-a{padding:0 20px 16px;color:var(--tx3);line-height:1.7;font-size:14px}
 
 /* ── Cap ── */
-.cap{border:2px solid #7C3AED;border-radius:20px;padding:36px;background:linear-gradient(135deg,#F5F3FF,#EFF6FF);margin-top:28px}
+.cap{border:2px solid #7C3AED;border-radius:20px;padding:32px;background:var(--cap-bg);margin-top:28px}
+@media(max-width:600px){.cap{padding:20px}}
 
 /* ── Instructor ── */
-.inst{display:flex;align-items:center;gap:36px;max-width:680px;margin:0 auto;background:#fff;border:1.5px solid #E2E8F0;border-radius:20px;padding:36px}
-@media(max-width:640px){.inst{flex-direction:column;text-align:center}}
+.inst{display:flex;align-items:center;gap:36px;max-width:700px;margin:0 auto;background:var(--bgc);border:1.5px solid var(--bd);border-radius:20px;padding:36px}
+@media(max-width:640px){.inst{flex-direction:column;text-align:center;padding:28px 20px}}
 .av{width:120px;height:120px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#2563EB,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:800;color:#fff}
 
 /* ── Footer ── */
-footer{border-top:1.5px solid #E2E8F0;padding:32px 0}
-footer a{color:#94A3B8;text-decoration:none;font-size:13px;transition:color .15s}
+footer{border-top:1.5px solid var(--bd);padding:32px 0}
+footer a{color:var(--tx4);text-decoration:none;font-size:13px;transition:color .15s}
 footer a:hover{color:#2563EB}
 
-/* ── Mobile ── */
-.mob{position:fixed;inset:0;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px}
-.mob a{color:#0F172A;text-decoration:none;font-size:20px;font-weight:700}
+/* ── Mobile menu ── */
+.mob{position:fixed;inset:0;background:var(--mob-bg);backdrop-filter:blur(16px);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.mob a{color:var(--tx);text-decoration:none;font-size:18px;font-weight:700}
 @media(max-width:900px){.nav-l{display:none!important}.mob-b{display:flex!important}}
-
-/* ── Hero right cards ── */
-.hrc{background:#fff;border:1.5px solid #E2E8F0;border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;transition:all .15s}
-.hrc:hover{border-color:#2563EB;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+@media(max-width:600px){.topbar{font-size:11px;gap:6px}}
 `;
 
 /* ═══════════════ HOOKS ═══════════════ */
@@ -324,6 +346,16 @@ function useAnim() {
   return ref;
 }
 
+/* ═══════════════ SEAT COUNTER ═══════════════ */
+function getSeatsLeft() {
+  // Start date: April 1, 2026. Start with 30 seats. Reduce by 1 per day.
+  const start = new Date("2026-04-01");
+  const now = new Date();
+  const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+  const seats = Math.max(5, 30 - Math.max(0, days));
+  return seats;
+}
+
 /* ═══════════════ SECTIONS ═══════════════ */
 
 function TopBar() {
@@ -331,13 +363,13 @@ function TopBar() {
     <div className="topbar">
       <span>Batch 1 starts late April / early May 2026</span>
       <a href={WHATSAPP_GROUP} target="_blank" rel="noopener noreferrer">
-        <MessageSquare size={13} /> Join WhatsApp Group
+        <MessageSquare size={12} /> Join WhatsApp Group
       </a>
     </div>
   );
 }
 
-function Nav() {
+function Nav({ dark, toggleDark }) {
   const [mob, setMob] = useState(false);
   const links = [
     { l: "About", h: "#about" }, { l: "Curriculum", h: "#curriculum" },
@@ -349,26 +381,45 @@ function Nav() {
         <div className="wrap nav-in">
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <Brain size={24} color="#2563EB" />
-            <span style={{ fontSize: 17, fontWeight: 800, color: "#0F172A" }}>DataSense</span>
-            <span style={{ fontSize: 13, color: "#94A3B8", fontWeight: 500 }}>/ Agent Builder</span>
+            <span style={{ fontSize: 17, fontWeight: 800, color: "var(--tx)" }}>DataSense</span>
+            <span style={{ fontSize: 13, color: "var(--tx4)", fontWeight: 500 }}>/ Agent Builder</span>
           </div>
           <div className="nav-l">
             {links.map((l) => <a key={l.h} href={l.h}>{l.l}</a>)}
+            <button className="theme-btn" onClick={toggleDark} title={dark ? "Light mode" : "Dark mode"}>
+              {dark ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
             <a href={ENROLL_URL} className="btn btn-p btn-s">Enroll Now</a>
           </div>
-          <button className="mob-b" onClick={() => setMob(true)} style={{ background: "none", border: "none", cursor: "pointer", display: "none", alignItems: "center" }}>
-            <Menu size={24} color="#0F172A" />
-          </button>
+          <div style={{ display: "none", alignItems: "center", gap: 8 }} className="mob-b">
+            <button className="theme-btn" onClick={toggleDark}>
+              {dark ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+            <button onClick={() => setMob(true)} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--tx)" }}>
+              <Menu size={24} />
+            </button>
+          </div>
         </div>
       </nav>
       {mob && (
         <div className="mob">
-          <button onClick={() => setMob(false)} style={{ position: "absolute", top: 18, right: 18, background: "none", border: "none", cursor: "pointer" }}><X size={26} /></button>
+          <button onClick={() => setMob(false)} style={{ position: "absolute", top: 18, right: 18, background: "none", border: "none", cursor: "pointer", color: "var(--tx)" }}><X size={26} /></button>
           {links.map((l) => <a key={l.h} href={l.h} onClick={() => setMob(false)}>{l.l}</a>)}
           <a href={ENROLL_URL} className="btn btn-p" style={{ marginTop: 8 }}>Enroll Now</a>
         </div>
       )}
     </>
+  );
+}
+
+function SeatCounter() {
+  const seats = getSeatsLeft();
+  return (
+    <div className="seat-bar">
+      <div className="seat-dot" />
+      <span>Only {seats} seats left for Batch 1</span>
+      <a href={ENROLL_URL} style={{ color: "#fff", textDecoration: "underline", fontWeight: 800 }}>Enroll Now</a>
+    </div>
   );
 }
 
@@ -379,30 +430,31 @@ function Hero() {
       <div className="wrap">
         <div className="hero-g">
           <div>
-            <div className="badge" style={{ background: "#EFF6FF", color: "#2563EB", border: "1px solid #BFDBFE", marginBottom: 20 }}>
+            <div className="badge" style={{ background: "var(--syl-bg)", color: "#2563EB", border: "1px solid #BFDBFE", marginBottom: 20 }}>
               <Zap size={13} /> Batch 1 - Starts Late April / Early May 2026
             </div>
-            <h1 style={{ fontSize: 48, fontWeight: 900, lineHeight: 1.1, marginBottom: 18, color: "#0F172A" }}>
+            <h1 style={{ fontSize: 48, fontWeight: 900, lineHeight: 1.1, marginBottom: 18, color: "var(--tx)" }}>
               <span className="grad">Agent Builder</span>
             </h1>
-            <p style={{ fontSize: 18, color: "#0F172A", lineHeight: 1.5, marginBottom: 8, fontWeight: 600 }}>
+            <p style={{ fontSize: 18, color: "var(--tx)", lineHeight: 1.5, marginBottom: 8, fontWeight: 600 }}>
               Build production AI agents with LangChain & LangGraph
             </p>
-            <p style={{ fontSize: 16, color: "#64748B", lineHeight: 1.65, marginBottom: 28, maxWidth: 480 }}>
+            <p style={{ fontSize: 16, color: "var(--tx3)", lineHeight: 1.65, marginBottom: 28, maxWidth: 480 }}>
               Master LangGraph, LangChain v1.0, Deep Agents & LangSmith in 6 weeks. Ship agents, not demos.
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 12 }}>
               <a href={ENROLL_URL} className="btn btn-p" style={{ fontSize: 15, padding: "13px 28px" }}>Enroll Now <ArrowRight size={16} /></a>
               <a href="#curriculum" className="btn btn-o" style={{ fontSize: 15, padding: "13px 28px" }}>View Curriculum <ArrowDown size={16} /></a>
             </div>
-            <p style={{ fontSize: 13, color: "#059669", fontWeight: 600, marginBottom: 36 }}>
+            <p style={{ fontSize: 13, color: "#059669", fontWeight: 600, marginBottom: 24 }}>
               Use code <span style={{ background: "#0F172A", color: "#fff", padding: "2px 8px", borderRadius: 4, fontFamily: "monospace", fontSize: 12, fontWeight: 800 }}>AGENTICAI</span> for 45% off - just Rs 5,000
             </p>
-            <div style={{ display: "flex", gap: 36, flexWrap: "wrap" }}>
+            <SeatCounter />
+            <div style={{ display: "flex", gap: 36, flexWrap: "wrap", marginTop: 24 }}>
               {[{ v: "6", l: "Weeks" }, { v: "12", l: "Sessions" }, { v: "5", l: "Assignments" }, { v: "1", l: "Capstone" }].map((s) => (
                 <div key={s.l} style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 30, fontWeight: 900, color: "#0F172A" }}>{s.v}</div>
-                  <div style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>{s.l}</div>
+                  <div style={{ fontSize: 30, fontWeight: 900, color: "var(--tx)" }}>{s.v}</div>
+                  <div style={{ fontSize: 12, color: "var(--tx4)", fontWeight: 500 }}>{s.l}</div>
                 </div>
               ))}
             </div>
@@ -510,7 +562,7 @@ function AboutCourse() {
           <h2 className="h2">What is <span className="grad">Agent Builder?</span></h2>
           <p className="sub" style={{ margin: "0 auto" }}>A 6-week intensive where you go from writing Python scripts to building, deploying, and monitoring multi-agent AI systems that run in production.</p>
         </div>
-        <div data-a style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+        <div data-a className="about-grid">
 
           <div className="card" style={{ borderTop: "4px solid #2563EB" }}>
             <h3 style={{ fontSize: 17, fontWeight: 800, marginBottom: 10, color: "#0F172A" }}>What you'll actually learn</h3>
@@ -627,7 +679,7 @@ function JourneySection() {
             </div>
           ))}
         </div>
-        <div data-a style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 16, maxWidth: 900, margin: "16px auto 0" }}>
+        <div data-a className="j-grid-3">
           {JOURNEY_STEPS.slice(4).map((s, i) => (
             <div key={i} className="j-card" style={{ background: s.bg }}>
               <div className="j-num">{i + 5}</div>
@@ -917,11 +969,18 @@ function Footer() {
 
 /* ═══════════════ APP ═══════════════ */
 export default function App() {
+  const [dark, setDark] = useState(false);
+  const toggleDark = () => setDark((d) => !d);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  }, [dark]);
+
   return (
     <>
       <style>{css}</style>
       <TopBar />
-      <Nav />
+      <Nav dark={dark} toggleDark={toggleDark} />
       <Hero />
       <NumbersBar />
       <AboutCourse />
