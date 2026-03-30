@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .animate-on-scroll { opacity: 1 !important; transform: none !important; }
+</style>
+</head>
+<body>
+<script>
+  // Inject override styles into the React app
+  window.addEventListener('DOMContentLoaded', () => {
+    const style = document.createElement('style');
+    style.textContent = '.animate-on-scroll { opacity: 1 !important; transform: none !important; }';
+    document.head.appendChild(style);
+  });
+  window.location.href = '/?noanim=1';
+</script>
+</body>
+</html>
